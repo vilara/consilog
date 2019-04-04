@@ -1,0 +1,38 @@
+<?php
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+
+Route::resource('/usuarios','UsuariosController');
+Route::resource('/oms','OmsController');
+Route::resource('/telefones','TelefonesController');
+Route::resource('/enderecos','EnderecosController');
+Route::resource('/latlongs','LatLongsController');
+Route::resource('/cidades','CidadesController');
+Route::resource('/estados','EstadosController');
+Route::resource('/funcoes','FuncoesController');
+Route::resource('/secoes','SecoesController');
+Route::resource('/logins','LoginsController');
+Route::resource('/civis','CivisController');
+Route::resource('/militares','MilitaresController');
+Route::resource('/postograds','PostoGradsController');
+Route::resource('/perfils','PerfilController');
+
+
+Route::get('/','PagesController@welcome');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
