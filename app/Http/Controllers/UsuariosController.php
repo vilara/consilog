@@ -136,4 +136,20 @@ class UsuariosController extends Controller
     	
     	return redirect('/usuarios')->with('success', 'Usuário excluído com sucesso!');
     }
+    
+    
+//     Controladores de manipulação -------------------------------
+
+    /**
+     *
+     *
+     * @param  int  $id
+     * retorna o telefone do usuario com referência ao seu Id
+     */
+    public function userTel($id)
+    {
+    	$telefones = User::find($id)->telefones()->get();
+    	return view('telefone.user_tel', compact('telefones'));
+    }
+    
 }

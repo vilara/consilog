@@ -26,4 +26,6 @@ class telefone extends Model {
 	}
 	
 	
+	
+	
 }

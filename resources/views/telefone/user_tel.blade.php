@@ -38,7 +38,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							@foreach ($telefone as $tel)
+							@foreach ($telefones as $tel)
 							<tr>
 								<th scope="row">{{ $tel->id }}</th>
 								<td>{{ $tel->numero }}</td>

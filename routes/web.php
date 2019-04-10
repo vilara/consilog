@@ -33,6 +33,8 @@ Route::resource('/perfils','PerfilController');
 
 Route::get('/','PagesController@welcome');
 
+Route::get('/usuarios/telefones/{id}','UsuariosController@userTel');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

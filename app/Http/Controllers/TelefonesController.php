@@ -13,10 +13,10 @@ class TelefonesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+	public function index()
     {
-        $telefones = telefone::find(17)->om;
-        return view('telefone.index', compact('telefones'));
+    	$telefone = telefone::find(10);
+    	return view('telefone.index', compact('telefone'));
         
     }
 
@@ -49,8 +49,8 @@ class TelefonesController extends Controller
      */
     public function show($id)
     {
-    	$telefone = telefone::where('id','$id');
-    	return view('telefone.show', compact('telefone'));
+    	$telefone = telefone::find($id);
+    	return view('telefone.index', compact('telefone'));
     }
 
     /**

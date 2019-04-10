@@ -59,17 +59,14 @@
 									@endforeach
 								</td>
 								
-								@if(empty($usuario->enderecos))
-								<td>teste</td>
-								@endif
 								
-								<td>@foreach ($usuario->telefones as $tel)
-								@if($tel->id > 0)
-										<center><a href="{{ route('telefones.show', $tel->id) }}" style="color: inherit;"><i class="fas fa-phone"></i></a></center>
-								@else
-								
+								<td>@forelse ($usuario->telefones as $tel)
+								@if($loop->last)
+										<center><a href="{{ url('/usuarios/telefones/'.$usuario->id) }}"  title="Visualizar telefones" style="color: inherit;"><i class="fas fa-phone"></i></a></center>
 								@endif	
-									@endforeach
+									@empty
+										<center><a href="" style="color: red;"><i class="fas fa-phone" title="Inserir telefone" ></i></a></center>
+									@endforelse
 								</td>
 
 

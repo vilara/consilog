@@ -2,5 +2,9 @@
 
 @section('title','Telefones')
 @section('body')
-{{$telefones->codom}}
+
+@foreach ($telefone as $tel)
+{{ $tel->numero }}
+@endforeach
+
 @endsection
