@@ -13,11 +13,12 @@
 
 				<div class="card-header">
 					<div class="row">
-						<div class="col-md-10">
-							<h3>{{ __('Telefones') }}</h3>
+						<div class="col-md-6">
+							<h3>{{ __('Telefones') }} de {{ $usuario->name }}</h3>
 						</div>
-						<div class="col-md-2 py-auto">
-							<a href="../usuarios/create" class="btn btn-success">Inserir telefone</a>
+						<div class="col-md-6"  align="right">
+						<a href="/usuarios" class="btn btn-success">Voltar</a>
+							<a href="{{ url('/usuarios/telefones/create/'.$usuario->id) }}" class="btn btn-success border">Novo</a>
 						</div>
 					</div>
 				</div>
@@ -28,33 +29,34 @@
 					<div class="alert alert-success">{{ session()->get('success') }}</div>
 					<br /> @endif
 
-					<table class="table">
-						<thead class="thead-soft">
+					<table class="table" align="center">
+						<thead class="thead-soft" align="center">
 							<tr>
 								<th scope="col">DDD</th>
 								<th scope="col">Número</th>
 								<th scope="col">Tipo</th>
+								<th scope="col">Seção</th>
 								<th scope="col">Ações</th>
 							</tr>
 						</thead>
 						<tbody>
 							@foreach ($telefones as $tel)
 							<tr>
-								<th scope="row">{{ $tel->id }}</th>
-								<td>{{ $tel->numero }}</td>
-								<td>{{ $tel->tipo }}</td>
-								
+								<td align="center">{{ $tel->ddd }}</td>
+								<td align="center">{{ $tel->numero }}</td>
+								<td align="center">{{ $tel->tipoTel['telTipo'] }}</td>
+								<td align="center">{{ $tel->secoe['nomeSecao'] }}</td>
 
 								<td>
 									<div class="row">
-										<div class="col-md-6 mt-1">
+										<div class="col-md-6 pt-1" align="right">
 											<a href="{{ route('telefones.edit',$tel->id) }}" style="color: inherit;"><i class="far fa-edit"></i></a>
 										</div>
 
-										<div class="col-md-6  text-lg-left pl-1">
+										<div class="col-md-6">
 											<form class="form-group" action="{{ route('telefones.destroy',$tel->id) }}"	method="post">
 												@csrf @method('DELETE')
-												<button class="btn form-control" type="submit"><i class="far fa-trash-alt"></i></button>
+												<button class="btn form-control" type="submit"  align="left"><i class="far fa-trash-alt"></i></button>
 											</form>
 										</div>
 									</div>

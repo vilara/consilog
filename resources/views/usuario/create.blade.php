@@ -21,8 +21,8 @@
  <div class="col-md-10">
  <h3>{{ __('Cadastro') }}</h3> 
  </div>
- <div class="col-md-2 py-auto">
- <a href="/usuarios" class="btn btn-success">Lista</a></div>
+ <div class="col-md-2" align="right">
+ <a href="/usuarios" class="btn btn-success" >Lista</a></div>
  </div>
  </div>
  
@@ -30,6 +30,8 @@
  
  <form class="form-horizontal" action="{{ route('register') }}" method="post">
 					 @csrf
+					  @method('POST')
+					  <input type="hidden" class="form-control" name="roles" value="1">
 						<div class="form-row">
     						<div class="form-group col-md-8" >
     							<label for="name">Nome Completo</label>

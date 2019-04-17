@@ -34,6 +34,7 @@
 								<th scope="col">DDD</th>
 								<th scope="col">Número</th>
 								<th scope="col">Tipo</th>
+								<th scope="col">Seção</th>
 								<th scope="col">Ações</th>
 							</tr>
 						</thead>
@@ -43,6 +44,7 @@
 								<th scope="row">{{ $tel->id }}</th>
 								<td>{{ $tel->numero }}</td>
 								<td>{{ $tel->tipo }}</td>
+								<td>{{ $tel->secoe['nomeSecao'] }}</td>
 								
 
 								<td>

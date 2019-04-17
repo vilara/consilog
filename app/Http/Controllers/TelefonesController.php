@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 use App\telefone;
+use App\tipoTel;
 use App\usuario;
+use App\secoe;
 
 class TelefonesController extends Controller
 {
@@ -29,7 +32,12 @@ class TelefonesController extends Controller
     {
         //
     }
-
+    
+    public function CreateTelUsu($id) {
+    	
+    	$usuario = User::find ( $id );
+    	return view ( 'endereco.create', compact ( 'usuario' ) );
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -38,7 +46,22 @@ class TelefonesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    	$telefone = new telefone();
+    	
+    	$telefone->ddd = $request->ddd;
+    	$telefone->numero = $request->numero;
+    	$telefone->secoe_id = $request->secoe_id;
+    	$telefone->tipotel_id = $request->tipotel_id;
+    	if ($request->tipo == 'usuario') {
+    		$telefone->telefoneTipo_type = 'usuario';
+    	} else {
+    		$telefone->telefoneTipo_type = 'om';
+    	}
+    	
+    	$telefone->telefoneTipo_id = $request->id;
+    	$telefone->save();
+    	
+    	return redirect ( '/usuarios' )->with ( 'success', 'Telefone do usuário inserido com sucesso!' );
     }
 
     /**
@@ -61,7 +84,11 @@ class TelefonesController extends Controller
      */
     public function edit($id)
     {
-        //
+    	$secao = secoe::all ();
+    	$telTipo = tipoTel::all();
+    	$telefone = telefone::find ( $id );
+    	$usuario = User::find ( $telefone->telefoneTipo_id );
+    	return view ( 'telefone.edit', compact ( 'telefone', 'usuario', 'secao', 'telTipo' ) );
     }
 
     /**
@@ -73,7 +100,17 @@ class TelefonesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+    	$telefone = telefone::find($id);
+    	
+    	$telefone->ddd = $request->ddd;
+    	$telefone->numero = $request->numero;
+    	$telefone->secoe_id = $request->secoe_id;
+    	$telefone->tipotel_id = $request->tipotel_id;
+    	    	
+    	
+    	$telefone->save();
+    	
+    	return redirect ( '/usuarios' )->with ( 'success', 'Telefone do usuário inserido com sucesso!' );
     }
 
     /**
@@ -84,6 +121,9 @@ class TelefonesController extends Controller
      */
     public function destroy($id)
     {
-        //
+    	$telefone = telefone::find($id);
+    	$telefone->delete();
+    	
+    	return redirect ( '/usuarios' )->with ( 'success', 'Telefone de usuário excluído com sucesso!' );
     }
 }

@@ -81,7 +81,13 @@ class RegisterController extends Controller
             'sexo' => $data['sexo'],
             'funcoe_id' => $data['funcoe_id'],
             'om_id' => $data['om_id'],
+            'perfil_id' => $data['roles'],
             'password' => Hash::make($data['password']),
         ]);
+        
+        $usu = User::all()->last();
+        $usu->perfils()->attach(1);
+        
+        
     }
 }

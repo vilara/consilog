@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'nomeGuerra', 'cpf', 'idt', 'sexo', 'funcoe_id', 'om_id'
+        'name', 'email', 'password', 'nomeGuerra', 'cpf', 'idt', 'sexo', 'funcoe_id', 'om_id', 'perfil_id'
     ];
 
     /**
@@ -29,9 +29,9 @@ class User extends Authenticatable
     ];
     
     
-    public function perfils()
+    public function perfil()
     {
-    	return $this->belongsToMany('App\perfil', 'usuario_perfil', 'usuario_id', 'perfil_id');
+    	return $this->belongsTo('App\perfil');
     }
     
     public function funcoe()

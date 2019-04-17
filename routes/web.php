@@ -29,11 +29,15 @@ Route::resource('/civis','CivisController');
 Route::resource('/militares','MilitaresController');
 Route::resource('/postograds','PostoGradsController');
 Route::resource('/perfils','PerfilController');
+Route::resource('/tipoTels','tipoTelsController');
 
 
 Route::get('/','PagesController@welcome');
 
 Route::get('/usuarios/telefones/{id}','UsuariosController@userTel');
+Route::get('/usuarios/telefones/create/{id}','UsuariosController@userTelCreate');
+Route::get('/usuarios/enderecos/{id}','EnderecosController@CreateEndUsu');
+
 
 Auth::routes();
 

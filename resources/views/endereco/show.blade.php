@@ -36,12 +36,12 @@
 						<div class="form-row">
     						<div class="form-group col-md-8" >
     							<label for="rua">Logradouro</label>
-        						<input type="text" class="form-control" name="rua"	id="rua" placeholder="" value="{{$endereco->rua}}">
+        						<input type="text" class="form-control" name="rua"	id="rua" disabled="disabled"  value="{{$endereco->rua}}">
     						</div>
 						
     						<div class="form-group col-md-4">
         						<label for="numeroEndereco">Número</label>
-        						<input type="text" class="form-control" name="numeroEndereco" id="numeroEndereco"  value="{{$endereco->numeroEndereco}}" placeholder="">
+        						<input type="text" class="form-control" name="numeroEndereco" id="numeroEndereco"  disabled="disabled"  value="{{$endereco->numeroEndereco}}" placeholder="">
     						</div>
 						</div>
 						
@@ -49,24 +49,24 @@
 						<div class="form-row">
     						<div class="form-group col-md-6" >						
 						    	<label for="cpf">Complemento</label>						
-						        <input type="type" class="form-control" id="complemento" name="complemento" placeholder=""  value="{{$endereco->complemento}}">
+						        <input type="type" class="form-control" id="complemento" name="complemento"  disabled="disabled"  value="{{$endereco->complemento}}">
 						   </div>
 						
     						<div class="form-group col-md-6">
     							<label for="idt">Bairro</label>
-        						<input type="type"	class="form-control" id="bairro" name="bairro" placeholder=""  value="{{$endereco->bairro}}">
+        						<input type="type"	class="form-control" id="bairro" name="bairro"  disabled="disabled"  value="{{$endereco->bairro}}">
     						</div>
 						</div>
 						
 						<div class="form-row">
     						<div class="form-group col-md-6">
     							<label for="cep">CEP</label>						
-    						    <input type="type"	class="form-control" id="cep" name="cep" placeholder=""  value="{{$endereco->cep}}">
+    						    <input type="type"	class="form-control" id="cep" name="cep" disabled="disabled"  value="{{$endereco->cep}}">
 							</div>
 							
 							<div class="form-group col-md-4">
     							<label for="cidade">Cidade</label>
-    							<select class="form-control" id="cidade" name="cidade">
+    							<select class="form-control" id="cidade" name="cidade"  disabled="disabled">
 									@foreach ($cidade as $cid)
 									
 									@if ($cid->id==$endereco->cidade_id )
@@ -81,7 +81,7 @@
 							
 							<div class="form-group col-md-2">
     							<label for="estado">Cidade</label>
-	    							<select class="form-control" id="estado" name="estado">
+	    							<select class="form-control" id="estado" name="estado"  disabled="disabled">
 										@foreach ($estado as $est)
 										@if ($est->id==$endereco->cidade->estado['id'] )
 										<option value="{{ $est->id }}" selected="selected">{{$est->siglaEstado}}</option>
@@ -99,11 +99,20 @@
 						
 						
 							
-							<button type="submit" class="btn btn-success">
-                                    {{ __('Editar') }}
-                                </button>
+							
 							
   </form> 
+  <div class="row">
+  <div class="col-md-2">
+  <a href="{{ route('enderecos.edit',$endereco->id) }}" type="submit" class="btn btn-success">  {{ __('Editar') }}   </a>
+  </div>
+  <div class="col-md-1">
+  <form class="form-inline" action="{{ route('enderecos.destroy',$endereco->id) }}"	method="post">
+												@csrf @method('DELETE')
+												<button class="btn btn-success" type="submit"  align="left"> {{ __('Excluir') }} </button>
+											</form>
+  </div>
+  </div>
 							
 </div>
 	</div>

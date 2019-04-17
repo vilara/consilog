@@ -22,8 +22,19 @@ class telefone extends Model {
 	
 	
 	public function telefoneTipo() {
-		return $this->morphTo ();
+		return $this->morphTo();
 	}
+	
+	public function secoe()
+	{
+		return $this->belongsTo('App\secoe');
+	}
+	
+	public function tipoTel()
+	{
+		return $this->belongsTo('App\tipoTel', 'tipotel_id');
+	}
+	
 	
 	
 	
