@@ -4,7 +4,18 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+
+/**
+ * Usado para definir o type de dentro da tabela a ser morphitizada
+ */
+Relation::morphMap([
+		
+		'civil'=> 'App\civi',
+		'militar'=> 'App\militare'
+		
+]);
 
 class User extends Authenticatable
 {
@@ -28,6 +39,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
     
+    public function usuarioable()
+    {
+    	return $this->morphTo();
+    }
     
     public function perfil()
     {
