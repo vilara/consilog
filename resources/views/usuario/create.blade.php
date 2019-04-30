@@ -33,7 +33,21 @@
 					  @method('POST')
 					  <input type="hidden" class="form-control" name="roles" value="1">
 						<div class="form-row">
-    						<div class="form-group col-md-8" >
+						
+							<div class="form-group col-md-2">
+    							<label for="postograd_id">Posto/Grad</label>
+									<select	class="form-control" id="postograd_id" name="postograd_id">
+											@foreach ($pgs as $pg)
+												@if (old('funcoe_id')== $pg->id )
+											<option value="{{ $pg->id }}" selected="selected">{{$pg->siglaPg}}</option>
+												@else
+											<option value="{{ $pg->id }}">{{$pg->siglaPg}}</option>
+												@endif
+											@endforeach
+								   </select>
+							</div>
+							
+    						<div class="form-group col-md-6" >
     							<label for="name">Nome Completo</label>
         						<input type="text" class="form-control" name="name"	id="name" placeholder="" value="{{old('name')}}">
         						<small id="nameHelp" class="form-text text-muted">Sem abreviaturas!</small>

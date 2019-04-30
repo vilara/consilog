@@ -14,6 +14,7 @@ use App\perfil;
 use App\User;
 use App\secoe;
 use App\tipoTel;
+use App\postograd;
 
 class UsuariosController extends Controller {
 	
@@ -41,7 +42,8 @@ class UsuariosController extends Controller {
 	public function create() {
 		$funcoe = funcoe::all ();
 		$om = om::all ();
-		return view ( 'usuario.create', compact ( 'om', 'funcoe', 'perfil' ) );
+		$pgs = postograd::all();
+		return view ( 'usuario.create', compact ( 'om', 'funcoe', 'perfil','pgs' ) );
 	}
 	
 	/**

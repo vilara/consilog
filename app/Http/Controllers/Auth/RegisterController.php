@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\militare;
 use App\usuario;
 use App\perfil;
 
@@ -72,22 +73,29 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
     	    	
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'nomeGuerra' => $data['nomeGuerra'],
-            'cpf' => $data['cpf'],
-            'idt' => $data['idt'],
-            'sexo' => $data['sexo'],
-            'funcoe_id' => $data['funcoe_id'],
-            'om_id' => $data['om_id'],
-            'perfil_id' => $data['roles'],
-            'password' => Hash::make($data['password']),
-        ]);
-        
-        $usu = User::all()->last();
-        $usu->perfils()->attach(1);
-        
+    	$mil = new militare();
+    	$mil->idtMilitar = $data['idt'];
+    	$mil->situacao = 'ativa';
+    	$mil->postograd_id = $data['postograd_id'];
+    	$mil->save();
+    	
+    	$usuario = new User();
+    	$usuario->name = $data['name'];
+    	$usuario->email = $data['email'];
+    	$usuario->nomeGuerra = $data['nomeGuerra'];
+    	$usuario->cpf = $data['cpf'];
+    	$usuario->idt = $data['idt'];
+    	$usuario->sexo = $data['sexo'];
+    	$usuario->funcoe_id = $data['funcoe_id'];
+    	$usuario->om_id =  $data['om_id'];
+    	$usuario->perfil_id = $data['roles'];
+    	$usuario->password = Hash::make($data['password']);
+    	
+    	$usuario->save();
+    	
+    	$mil->users()->save($usuario);
+    	
+    	return $usuario;
         
     }
 }
