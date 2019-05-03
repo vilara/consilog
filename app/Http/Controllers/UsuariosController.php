@@ -15,6 +15,7 @@ use App\User;
 use App\secoe;
 use App\tipoTel;
 use App\postograd;
+use App\militare;
 
 class UsuariosController extends Controller {
 	
@@ -29,9 +30,9 @@ class UsuariosController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		$user = User::with ( 'enderecos', 'enderecos.cidade', 'enderecos.cidade.estado' )->get ();
-		
-		return view ( 'usuario.index', compact ( 'user' ) );
+		$user = User::with ( 'enderecos', 'enderecos.cidade', 'enderecos.cidade.estado','usuarioable' )->get();
+		$postgrad = postograd::all();
+		return view ( 'usuario.index', compact ( 'user', 'postgrad' ) );
 	}
 	
 	/**

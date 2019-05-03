@@ -5,17 +5,21 @@
 <div class="container">
 	<div class="row justify-content-center">
 
-		<div class="col-md-10">
-
+		<div class="col-md-12">
+	
 			<div class="card">
 
 				<div class="card-header">
 					<div class="row">
 						<div class="col-md-10">
+							
 							<h3>{{ __('Usuários') }}</h3>
 						</div>
 						<div class="col-md-2" align="right">
-							<a href="../usuarios/create" class="btn btn-success">Novo</a>
+							<a href="../usuarios/create" class="btn btn-success">Novo
+						
+							
+							</a>
 						</div>
 					</div>
 				</div>
@@ -29,6 +33,7 @@
 					<table class="table">
 						<thead class="thead-soft" align="center">
 							<tr>
+								<th scope="col">Pg</th>
 								<th scope="col">Nome</th>
 								<th scope="col">Função</th>
 								<th scope="col">E-mail</th>
@@ -39,9 +44,19 @@
 								<th scope="col">Ações</th>
 							</tr>
 						</thead>
+						
 						<tbody align="center">
 							@foreach ($user as $usuario)
 							<tr>
+								<td>
+							
+								@foreach($postgrad as $pg)
+									@if($pg->id == $usuario->usuarioable['postograd_id'])
+							       		 {{ $pg->siglaPg }}
+							        @endif
+						        @endforeach
+								
+								</td>
 								<td align="left"><a href="{{ '/usuarios/'.$usuario->id}}"
 									style="color: inherit;">{{ $usuario->name }}</a></td>
 								<td>{{ $usuario->funcoe['nomeFuncao'] }}</td>

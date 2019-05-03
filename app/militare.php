@@ -22,4 +22,14 @@ class militare extends Model
 	{
 		return $this->morphOne('App\User', 'usuarioable');
 	}
+	
+	
+	public function postograd()
+	{
+		return $this->belongsTo('App\postograd');
+	}
+	
+	
+	
+	
 }

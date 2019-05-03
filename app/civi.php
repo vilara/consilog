@@ -10,4 +10,6 @@ class civi extends Model
 	{
 		return $this->morphOne('App\User', 'usuarioable');
 	}
+	
+
 }

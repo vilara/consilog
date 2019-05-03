@@ -49,6 +49,13 @@ class User extends Authenticatable
     	return $this->belongsTo('App\perfil');
     }
     
+    public function postograd()
+    {
+    	return $this->belongsTo('App\postograd');
+    }
+    
+ 
+    
     public function funcoe()
     {
     	return $this->belongsTo('App\funcoe');
