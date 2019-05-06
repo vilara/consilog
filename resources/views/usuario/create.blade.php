@@ -116,12 +116,23 @@
 							</div>
 							
 							<div class="form-row">
-    						<div class="form-group col-md-6 offset-md-3">
+							
+    						<div class="form-group col-md-6">
     							<label for="sexo">Sexo</label>
     							<div class="row  border pt-1" >
     							    <div class="form-group col-md-12 py-auto">
                               &nbsp&nbsp&nbsp&nbsp&nbsp         &nbsp&nbsp&nbsp&nbsp&nbsp  <label class="radio-inline mr-3"><input type="radio" class="form-radio-input" name="sexo" id="sexo1" value="1" @if(old('sexo')==1) {{'checked="checked"'}} @endif>  Masculino</label>
                                        &nbsp&nbsp&nbsp&nbsp&nbsp  <label class="radio-inline"><input type="radio" class="form-radio-input" name="sexo" id="sexo2" value="2" @if(old('sexo')==2) {{'checked="checked"'}} @endif>  Feminino</label>
+  									</div>
+                                    </div>
+                             </div>
+                             
+    						<div class="form-group col-md-6">
+    							<label for="situacao">Situação</label>
+    							<div class="row  border pt-1" >
+    							    <div class="form-group col-md-12 py-auto">
+                              &nbsp&nbsp&nbsp&nbsp&nbsp         &nbsp&nbsp&nbsp&nbsp&nbsp  <label class="radio-inline mr-3"><input type="radio" class="form-radio-input" name="situacao" id="situacao" value="ativa" @if(old('sexo')==1) {{'checked="checked"'}} @endif>  Ativa</label>
+                                       &nbsp&nbsp&nbsp&nbsp&nbsp  <label class="radio-inline"><input type="radio" class="form-radio-input" name="situacao" id="situacao" value="reserva" @if(old('sexo')==2) {{'checked="checked"'}} @endif>  Reserva</label>
   									</div>
                                     </div>
                                  </div>

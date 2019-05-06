@@ -32,7 +32,20 @@
         @method('PATCH')
         @csrf
 						<div class="form-row">
-    						<div class="form-group col-md-8" >
+								<div class="form-group col-md-2">
+    							<label for="postograd_id">Posto/Grad</label>
+									<select	class="form-control" id="postograd_id" name="postograd_id">
+											@foreach ($pgs as $pg)
+												@if ($usuario->usuarioable->postograd_id == $pg->id )
+											<option value="{{ $pg->id }}" selected="selected">{{$pg->siglaPg}}</option>
+												@else
+											<option value="{{ $pg->id }}">{{$pg->siglaPg}}</option>
+												@endif
+											@endforeach
+								   </select>
+							</div>
+						
+    						<div class="form-group col-md-6" >
     							<label for="name">Nome Completo</label>
         						<input type="text" class="form-control" name="name"	id="name" placeholder="" value="{{$usuario->name}}">
         						<small id="nameHelp" class="form-text text-muted">Sem abreviaturas!</small>
@@ -54,7 +67,7 @@
 						
     						<div class="form-group col-md-6">
     							<label for="idt">Identidade Militar</label>
-        						<input type="type"	class="form-control" id="idt" name="idt" placeholder=""  value="{{$usuario->idt}}">
+        						<input type="type"	class="form-control" id="idt" name="idt" placeholder=""  value="{{$usuario->usuarioable->idtMilitar}}">
         						<small id="idtHelp"	class="form-text text-muted">Somente números!</small>
     						</div>
 						</div>
@@ -110,11 +123,25 @@
 							
 							<div class="form-row">
 							
+							<div class="form-group col-md-4 mx-auto">
+    							<label for="situacao">Situação</label>
+    							<div class="row  border pt-1" >
+    							    <div class="form-group col-md-12">
+                                        <label class="radio-inline mr-3"><input type="radio" class="form-radio-input" name="situacao" id="situacao" value="ativa" @if($usuario->usuarioable->situacao=='ativa') {{'checked="checked"'}} @endif>  Ativa</label>
+                                        <label class="radio-inline"><input type="radio" class="form-radio-input" name="situacao" id="situacao" value="reserva" @if($usuario->usuarioable->situacao=='reserva') {{'checked="checked"'}} @endif>  Reserva</label>
+  									</div>
+                                    </div>
+                                 </div>
+							
 							<div class="form-group col-md-4">
 										<label for="perfil">Perfil</label>
 									<select class="form-control" id="perfil" name="perfil">
 									@foreach ($perfi as $perfil)
+									@if ($perfil->id== $usuario->perfil_id )
+											<option value="{{ $perfil->id }}" selected="selected">{{$perfil->tipo}}</option>
+												@else
 											<option value="{{ $perfil->id }}">{{$perfil->tipo}}</option>
+											@endif
 										@endforeach	
 								   </select>
 							</div>

@@ -101,8 +101,9 @@ class UsuariosController extends Controller {
 	public function edit(User $usuario) {
 		$funcoe = funcoe::all ();
 		$om = om::all ();
-		$perfi = perfil::all ();
-		return view ( 'usuario.edit', compact ( 'usuario', 'om', 'funcoe', 'perfi' ) );
+		$perfi = perfil::all();
+		$pgs = postograd::all();
+		return view ( 'usuario.edit', compact ( 'usuario', 'om', 'funcoe', 'perfi','pgs' ) );
 	}
 	
 	/**
@@ -123,6 +124,16 @@ class UsuariosController extends Controller {
 		$usuario->funcoe_id = $request->funcoe_id;
 		$usuario->om_id = $request->om_id;
 		$usuario->perfil_id = $request->perfil;
+		
+		
+		if ($usuario->usuarioable_type == 'militar')
+		{
+		$mil = militare::find($usuario->usuarioable_id);
+		$mil->idtMilitar = $request->idt;
+		$mil->postograd_id = $request->postograd_id;
+		$mil->situacao = $request->situacao;
+		$mil->save();
+		}
 		$usuario->save();
 		
 		return redirect ( '/usuarios' )->with ( 'success', 'Usuário Editado com sucesso!' );
@@ -141,6 +152,8 @@ class UsuariosController extends Controller {
 		
 		
 		$usuario->usuarioable()->delete();
+		$usuario->telefones()->delete();
+		$usuario->enderecos()->delete();
 		$usuario->delete();
 		
 		

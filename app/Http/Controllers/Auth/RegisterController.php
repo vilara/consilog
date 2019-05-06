@@ -75,7 +75,7 @@ class RegisterController extends Controller
     	    	
     	$mil = new militare();
     	$mil->idtMilitar = $data['idt'];
-    	$mil->situacao = 'ativa';
+    	$mil->situacao = $data['situacao'];
     	$mil->postograd_id = $data['postograd_id'];
     	$mil->save();
     	
