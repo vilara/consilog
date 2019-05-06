@@ -135,8 +135,15 @@ class UsuariosController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function destroy($id) {
+		
+		
 		$usuario = User::find($id);
+		
+		
+		$usuario->usuarioable()->delete();
 		$usuario->delete();
+		
+		
 		
 		return redirect ( '/usuarios' )->with ( 'success', 'Usuário excluído com sucesso!' );
 	}
