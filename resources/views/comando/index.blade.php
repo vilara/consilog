@@ -1,4 +1,4 @@
-@extends('layouts.app') @section('title','OM') @section('content')
+@extends('layouts.app') @section('title','Comandos') @section('content')
 
 
 
@@ -13,10 +13,10 @@
 					<div class="row">
 						<div class="col-md-10">
 							
-							<h3>{{ __('OM') }}</h3>
+							<h3>{{ __('Comandos') }}</h3>
 						</div>
 						<div class="col-md-2" align="right">
-							<a href="{{ route('oms.create') }}" class="btn btn-success">Novo
+							<a href="{{ route('comandos.create') }}" class="btn btn-success">Novo
 						
 							
 							</a>
@@ -33,8 +33,8 @@
 					<table class="table">
 						<thead class="thead-soft" align="center">
 							<tr>
-								<th scope="col">Nome OM</th>
-								<th scope="col">Sigla OM</th>
+								<th scope="col">Nome Comando</th>
+								<th scope="col">Sigla Comando</th>
 								<th scope="col">Codom</th>
 								<th scope="col">Codug</th>
 								<th scope="col">Ações</th>
@@ -42,15 +42,15 @@
 						</thead>
 						
 						<tbody align="center">
-							@foreach ($oms as $om)
+							@foreach ($comandos as $comando)
 							<tr>
 								
 																	
-								<td><a href="{{ route('oms.show',$om->id)}}"
-									style="color: inherit;">{{ $om->nomeOm }}</a></td>
-								<td>{{ $om->siglaOm }}</td>
-								<td>{{ $om->codom }}</td>
-								<td>{{ $om->codoug }}</td>
+								<td><a href="{{ route('comandos.show',$comando->id)}}"
+									style="color: inherit;">{{ $comando->nomeCmdo }}</a></td>
+								<td>{{ $comando->siglaCmdo }}</td>
+								<td>{{ $comando->codomCmdo }}</td>
+								<td>{{ $comando->codugCmdo }}</td>
 
 
 						
@@ -58,11 +58,11 @@
 								<td>
 									<div class="row">
 										<div class="col-md-6 pt-0">
-											<a href="{{ route('oms.edit',$om->id) }}"	style="color: inherit;"><i class="far fa-edit"></i></a>
+											<a href="{{ route('comandos.edit',$comando->id) }}"	style="color: inherit;"><i class="far fa-edit"></i></a>
 										</div>
 
 										<div class="col-md-6">
-											<form class="form-group" action="{{ route('oms.destroy',$om->id) }}"	method="post">
+											<form class="form-group" action="{{ route('comandos.destroy',$comando->id) }}"	method="post">
 												@csrf @method('DELETE')
 											<button class="btn form-control pt-0" type="submit"><i class="far fa-trash-alt"></i></button>
 											</form>

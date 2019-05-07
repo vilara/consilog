@@ -30,6 +30,7 @@ Route::resource('/militares','MilitaresController');
 Route::resource('/postograds','PostoGradsController');
 Route::resource('/perfils','PerfilController');
 Route::resource('/tipoTels','tipoTelsController');
+Route::resource('/comandos','ComandoController');
 
 
 Route::get('/','PagesController@welcome');

@@ -17,15 +17,38 @@
     
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     
+    
+
+    
+    
+    
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="/">Início <span class="sr-only">(current)</span></a>
       </li>
       
-      <li class="nav-item">
       
-        <a class="nav-link" href="{{ route('usuarios.index') }}">Usuários</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Administração
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a  class="dropdown-item"  href="{{ route('usuarios.index') }}">Usuários</a>
+            <a  class="dropdown-item"  href="{{ route('comandos.index') }}">Comandos</a>
+            <a  class="dropdown-item"  href="{{ route('oms.index') }}">OM</a>
+        </div>
       </li>
+      
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Cadastros
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+            <a class="dropdown-item" href="{{ route('usuarios.create') }}">Usuário</a>
+        </div>
+      </li>
+      
+     
     </ul>
     
      <ul class="navbar-nav ml-auto">

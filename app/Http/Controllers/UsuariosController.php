@@ -29,6 +29,7 @@ class UsuariosController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
+	
 	public function index() {
 		$user = User::with ( 'enderecos', 'enderecos.cidade', 'enderecos.cidade.estado','usuarioable' )->get();
 		$postgrad = postograd::all();
@@ -87,9 +88,12 @@ class UsuariosController extends Controller {
 	 * @param int $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function show($id) {
-		$usuarios = usuario::find ( $id );
-		return view ( 'usuario.show', compact ( 'usuarios' ) );
+	public function show(User $usuario) {
+		$funcoe = funcoe::all ();
+		$om = om::all ();
+		$perfi = perfil::all();
+		$pgs = postograd::all();
+		return view ( 'usuario.show', compact ( 'usuario','om', 'funcoe', 'perfi','pgs' ) );
 	}
 	
 	/**

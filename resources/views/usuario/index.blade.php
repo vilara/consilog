@@ -34,7 +34,7 @@
 						<thead class="thead-soft" align="center">
 							<tr>
 								<th scope="col">Pg</th>
-								<th scope="col">Nome</th>
+								<th scope="col">Nome Guerra</th>
 								<th scope="col">Função</th>
 								<th scope="col">E-mail</th>
 								<th scope="col">Perfil</th>
@@ -58,7 +58,7 @@
 								
 								</td>
 								<td align="left"><a href="{{ '/usuarios/'.$usuario->id}}"
-									style="color: inherit;">{{ $usuario->name }}</a></td>
+									style="color: inherit;">{{ $usuario->nomeGuerra }}</a></td>
 								<td>{{ $usuario->funcoe['nomeFuncao'] }}</td>
 								<td>{{ $usuario->email }}</td>
 

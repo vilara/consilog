@@ -15,8 +15,8 @@ class OmsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $name = om::all();
-        return view('om.index', compact('name'));
+        $oms = om::all();
+        return view('om.index', compact('oms'));
     }
 
     /**
@@ -26,7 +26,8 @@ class OmsController extends Controller
      */
     public function create()
     {
-        //
+    	$oms = om::all();
+    	return view ( 'om.create', compact ( 'oms') );
     }
 
     /**
@@ -37,7 +38,16 @@ class OmsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    	$om = new om();
+    	
+    	$om->nomeOm = $request->nomeOm;
+    	$om->siglaOm = $request->siglaOm;
+    	$om->codom = $request->codom;
+    	$om->codoug = $request->codoug;
+    	
+    	$om->save();
+    	
+    	return redirect ( '/oms' )->with ( 'success', 'OM inserida com sucesso!' );
     }
 
     /**
@@ -46,9 +56,9 @@ class OmsController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(om $om)
     {
-        //
+    	return view ( 'om.show', compact ( 'om') );
     }
 
     /**
@@ -59,10 +69,7 @@ class OmsController extends Controller
      */
     public function edit(Om $om)
     {
-        
-        // $om = om::find($id);
         return view('om.edit', compact('om'));
-        // return $om;
     }
 
     /**
@@ -72,9 +79,17 @@ class OmsController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, om $om)
     {
-        //
+    	
+    	$om->nomeOm = $request->nomeOm;
+    	$om->siglaOm = $request->siglaOm;
+    	$om->codom = $request->codom;
+    	$om->codoug = $request->codoug;
+    	
+    	$om->save();
+    	
+    	return redirect ( '/oms' )->with ( 'success', 'OM inserida com sucesso!' );
     }
 
     /**
@@ -83,8 +98,10 @@ class OmsController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(om $om)
     {
-        //
+    	$om->delete();
+    	
+    	return redirect ( '/om' )->with ( 'success', 'OM excluída com sucesso!' );
     }
 }
