@@ -6,8 +6,6 @@ use App\endereco;
 use App\usuario;
 use Illuminate\Http\Request;
 use App\User;
-use App\cidade;
-use App\estado;
 
 class EnderecosController extends Controller {
 	/**
@@ -16,11 +14,9 @@ class EnderecosController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		$cidade = cidade::all ();
-		$estado = estado::all ();
 		$endereco = endereco::find ( 1 );
 		$usu = User::find ( $endereco->enderecoTipo_id );
-		return view ( 'endereco.show', compact ( 'endereco', 'usu', 'cidade', 'estado' ) );
+		return view ( 'endereco.show', compact ( 'endereco', 'usu') );
 	}
 	
 	/**
@@ -29,17 +25,13 @@ class EnderecosController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function create() {
-		$cidade = cidade::all ();
-		$estado = estado::all ();
 		$endereco = endereco::find ( $id );
 		$usu = User::find ( $endereco->enderecoTipo_id );
-		return view ( 'endereco.show', compact ( 'endereco', 'usu', 'cidade', 'estado' ) );
+		return view ( 'endereco.show', compact ( 'endereco', 'usu') );
 	}
 	public function CreateEndUsu($id) {
-		$cidade = cidade::all ();
-		$estado = estado::all ();
 		$usu = User::find ( $id );
-		return view ( 'endereco.create', compact ( 'usu', 'cidade', 'estado' ) );
+		return view ( 'endereco.create', compact ( 'usu' ) );
 	}
 	
 	/**
@@ -57,7 +49,8 @@ class EnderecosController extends Controller {
 		$endereco->complemento = $request->complemento;
 		$endereco->bairro = $request->bairro;
 		$endereco->cep = $request->cep;
-		$endereco->cidade_id = $request->cidade;
+		$endereco->cidade = $request->cidade;
+		$endereco->estado = $request->estado;
 		if ($request->tipo == 'usuario') {
 			$endereco->enderecoTipo_type = 'usuario';
 		} else {
@@ -76,12 +69,10 @@ class EnderecosController extends Controller {
 	 * @param int $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function show($id) {
-		$cidade = cidade::all ();
-		$estado = estado::all ();
-		$endereco = endereco::find ( $id );
+	public function show(endereco $endereco) {
+		
 		$usu = User::find ( $endereco->enderecoTipo_id );
-		return view ( 'endereco.show', compact ( 'endereco', 'usu', 'cidade', 'estado' ) );
+		return view ( 'endereco.show', compact ( 'endereco', 'usu' ) );
 	}
 	
 	/**
@@ -91,11 +82,9 @@ class EnderecosController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function edit($id) {
-		$cidade = cidade::all ();
-		$estado = estado::all ();
 		$endereco = endereco::find ( $id );
 		$usu = User::find ( $endereco->enderecoTipo_id );
-		return view ( 'endereco.edit', compact ( 'endereco', 'usu', 'cidade', 'estado' ) );
+		return view ( 'endereco.edit', compact ( 'endereco', 'usu' ) );
 	}
 	
 	/**
@@ -112,8 +101,9 @@ class EnderecosController extends Controller {
 		$endereco->numeroEndereco = $request->numeroEndereco;
 		$endereco->complemento = $request->complemento;
 		$endereco->bairro = $request->bairro;
-		$endereco->cidade_id = $request->cidade;
-		$endereco->save ();
+		$endereco->cidade = $request->cidade;
+		$endereco->estado = $request->estado;
+		$endereco->save();
 		
 		return redirect ( '/usuarios' )->with ( 'success', 'Endereço do Usuário Editado com sucesso!' );
 	}

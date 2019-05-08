@@ -5,9 +5,6 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 
-/**
- * Usado para definir o type de dentro da tabela a ser morphitizada
- */
 Relation::morphMap([
 		
 		'om'=> 'App\om',
@@ -21,21 +18,11 @@ Relation::morphMap([
  */
 class endereco extends Model
 {
+	protected $fillable = [
+			'rua', 'numeroEndereco', 'complemento', 'bairro', 'cep', 'estado', 'cidade', 'enderecoTipo_type', 'enderecoTipo_id'
+	];
 	public function enderecoTipo()
 	{
 		return $this->morphTo();
 	}
-	
-	public function cidade()
-	{
-		return $this->belongsTo('App\cidade');
-	}
-	
-	public function estado()
-	{
-		return $this->belongsTo('App\estado');
-	}
-	
-	
-	
 }

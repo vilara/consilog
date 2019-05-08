@@ -33,66 +33,49 @@
  <form class="form-horizontal" method="post" action="{{ route('enderecos.update', $endereco->id) }}">
         @method('PATCH')
         @csrf
+      					<div class="form-row">
+       						<div class="form-group col-md-3" >
+    							<label for="cep">CEP</label>
+        						<input type="text" class="form-control" name="cep"	id="cep" value="{{$endereco->cep}}" >
+    						</div>
+       					</div>
+       					
 						<div class="form-row">
     						<div class="form-group col-md-8" >
     							<label for="rua">Logradouro</label>
-        						<input type="text" class="form-control" name="rua"	id="rua" placeholder="" value="{{$endereco->rua}}">
+        						<input type="text" class="form-control" name="rua"	id="rua"  value="{{$endereco->rua}}">
     						</div>
 						
     						<div class="form-group col-md-4">
         						<label for="numeroEndereco">Número</label>
-        						<input type="text" class="form-control" name="numeroEndereco" id="numeroEndereco"  value="{{$endereco->numeroEndereco}}" placeholder="">
+        						<input type="text" class="form-control" name="numeroEndereco" id="numeroEndereco"  value="{{$endereco->numeroEndereco}}" >
     						</div>
 						</div>
 						
 						
 						<div class="form-row">
     						<div class="form-group col-md-6" >						
-						    	<label for="cpf">Complemento</label>						
-						        <input type="type" class="form-control" id="complemento" name="complemento" placeholder=""  value="{{$endereco->complemento}}">
+						    	<label for="complemento">Complemento</label>						
+						        <input type="type" class="form-control" id="complemento" name="complemento"  value="{{$endereco->complemento}}">
 						   </div>
 						
     						<div class="form-group col-md-6">
     							<label for="idt">Bairro</label>
-        						<input type="type"	class="form-control" id="bairro" name="bairro" placeholder=""  value="{{$endereco->bairro}}">
+        						<input type="type"	class="form-control" id="bairro" name="bairro" value="{{$endereco->bairro}}">
     						</div>
 						</div>
 						
 						<div class="form-row">
-    						<div class="form-group col-md-6">
-    							<label for="cep">CEP</label>						
-    						    <input type="type"	class="form-control" id="cep" name="cep" placeholder=""  value="{{$endereco->cep}}">
-							</div>
-							
-							<div class="form-group col-md-4">
-    							<label for="cidade">Cidade</label>
-    							<select class="form-control" id="cidade" name="cidade">
-									@foreach ($cidade as $cid)
-									
-									@if ($cid->id==$endereco->cidade_id )
-									<option value="{{ $cid->id }}" selected="selected">{{$cid->nomeCidade}}</option>
-									@else
-									<option value="{{ $cid->id }}">{{$cid->nomeCidade}}</option>
-									@endif
-									
-									@endforeach
-								</select>
-							</div>
-							
-							<div class="form-group col-md-2">
-    							<label for="estado">Cidade</label>
-	    							<select class="form-control" id="estado" name="estado">
-										@foreach ($estado as $est)
-										@if ($est->id==$endereco->cidade->estado['id'] )
-										<option value="{{ $est->id }}" selected="selected">{{$est->siglaEstado}}</option>
-										@else
-										<option value="{{ $est->id }}">{{$est->siglaEstado}}</option>
-										@endif
-										
-										@endforeach
-									</select>
-							</div>
-							</div>
+    						<div class="form-group col-md-6" >						
+						    	<label for="cidade">Cidade</label>						
+						        <input type="type" class="form-control" id="cidade" name="cidade"  value="{{$endereco->cidade}}">
+						   </div>
+						
+    						<div class="form-group col-md-2">
+    							<label for="estado">Estado</label>
+        						<input type="type"	class="form-control" id="estado" name="estado" value="{{$endereco->estado}}">
+    						</div>
+						</div>
 							
     					
 					

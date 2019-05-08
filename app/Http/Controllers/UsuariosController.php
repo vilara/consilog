@@ -31,7 +31,7 @@ class UsuariosController extends Controller {
 	 */
 	
 	public function index() {
-		$user = User::with ( 'enderecos', 'enderecos.cidade', 'enderecos.cidade.estado','usuarioable' )->get();
+		$user = User::with ( 'enderecos','usuarioable' )->get();
 		$postgrad = postograd::all();
 		return view ( 'usuario.index', compact ( 'user', 'postgrad' ) );
 	}

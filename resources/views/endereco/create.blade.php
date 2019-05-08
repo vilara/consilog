@@ -36,6 +36,13 @@
         				<input type="hidden" class="form-control" name="id"	 value="{{ $usu->id }}" >
        					<input type="hidden" class="form-control" name="tipo" value="usuario" >
        					
+       					<div class="form-row">
+       						<div class="form-group col-md-3" >
+    							<label for="cep">CEP</label>
+        						<input type="text" class="form-control" name="cep"	id="cep" >
+    						</div>
+       					</div>
+       					
 						<div class="form-row">
     						<div class="form-group col-md-8" >
     							<label for="rua">Logradouro</label>
@@ -51,7 +58,7 @@
 						
 						<div class="form-row">
     						<div class="form-group col-md-6" >						
-						    	<label for="cpf">Complemento</label>						
+						    	<label for="complemento">Complemento</label>						
 						        <input type="type" class="form-control" id="complemento" name="complemento" >
 						   </div>
 						
@@ -62,32 +69,18 @@
 						</div>
 						
 						<div class="form-row">
-    						<div class="form-group col-md-6">
-    							<label for="cep">CEP</label>						
-    						    <input type="type"	class="form-control" id="cep" name="cep">
-							</div>
-							
-							<div class="form-group col-md-4">
-    							<label for="cidade">Cidade</label>
-    							<select class="form-control" id="cidade" name="cidade">
-									@foreach ($cidade as $cid)
-										<option value="{{ $cid->id }}">{{$cid->nomeCidade}}</option>
-									@endforeach
-								</select>
-							</div>
-							
-							<div class="form-group col-md-2">
-    							<label for="estado">Cidade</label>
-	    							<select class="form-control" id="estado" name="estado">
-										@foreach ($estado as $est)
-										<option value="{{ $est->id }}">{{$est->siglaEstado}}</option>
-										@endforeach
-									</select>
-							</div>
-							</div>
-							
-    					
-					
+    						<div class="form-group col-md-6" >						
+						    	<label for="cidade">Cidade</label>						
+						        <input type="type" class="form-control" id="cidade" name="cidade" >
+						   </div>
+						
+    						<div class="form-group col-md-2">
+    							<label for="estado">Estado</label>
+        						<input type="type"	class="form-control" id="estado" name="estado">
+    						</div>
+						</div>
+						
+
 						
 						
 							
@@ -102,7 +95,6 @@
 	</div>
 	</div>
 	</div>
-
-
+	
 
 @endsection
