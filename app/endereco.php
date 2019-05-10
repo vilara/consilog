@@ -19,10 +19,16 @@ Relation::morphMap([
 class endereco extends Model
 {
 	protected $fillable = [
-			'rua', 'numeroEndereco', 'complemento', 'bairro', 'cep', 'estado', 'cidade', 'enderecoTipo_type', 'enderecoTipo_id'
+			'rua', 'numeroEndereco', 'complemento', 'bairro', 'cep', 'estado', 'cidade', 'latlong_id', 'enderecoTipo_type', 'enderecoTipo_id'
 	];
 	public function enderecoTipo()
 	{
 		return $this->morphTo();
 	}
+	
+	public function latlong()
+	{
+		return $this->hasOne('App\latlong');
+	}
+	
 }

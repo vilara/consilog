@@ -37,6 +37,8 @@
 								<th scope="col">Sigla OM</th>
 								<th scope="col">Codom</th>
 								<th scope="col">Codug</th>
+								<th scope="col">Endereços</th>
+								<th scope="col">Loc</th>
 								<th scope="col">Ações</th>
 							</tr>
 						</thead>
@@ -51,8 +53,19 @@
 								<td>{{ $om->siglaOm }}</td>
 								<td>{{ $om->codom }}</td>
 								<td>{{ $om->codoug }}</td>
+								
+								<td>@forelse ($om->enderecos as $end) @if($loop->last)
+									<center>
+										<a href="{{ route('enderecos.show',$end->id) }}"
+											style="color: inherit;" title="Visualizar endereço"><i class="fas fa-home"></i></a>
+									</center> @endif @empty
+									<center>
+										<a href="{{ url('/om/enderecos/'.$om->id) }}" style="color: red;"><i class="fas fa-home"
+											title="Inserir endereço"></i></a></center>  @endforelse
+								</td>
 
 
+								<td><i class="fas fa-globe-americas"></i></td>
 						
 
 								<td>

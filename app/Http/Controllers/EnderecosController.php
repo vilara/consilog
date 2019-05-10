@@ -6,6 +6,7 @@ use App\endereco;
 use App\usuario;
 use Illuminate\Http\Request;
 use App\User;
+use App\om;
 
 class EnderecosController extends Controller {
 	/**
@@ -71,8 +72,13 @@ class EnderecosController extends Controller {
 	 */
 	public function show(endereco $endereco) {
 		
+		if ($endereco->enderecoTipo_type == 'usuario'){
 		$usu = User::find ( $endereco->enderecoTipo_id );
-		return view ( 'endereco.show', compact ( 'endereco', 'usu' ) );
+		return view ( 'endereco.show', compact ( 'endereco','usu') );
+		}else{
+		$om = om::find ( $endereco->enderecoTipo_id );
+		return view ( 'endereco.showOm', compact ( 'endereco','om') );
+		}
 	}
 	
 	/**
