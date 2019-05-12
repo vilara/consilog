@@ -15,7 +15,7 @@ class OmsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $oms = om::all();
+        $oms = om::with('enderecos.latlong')->get();
         return view('om.index', compact('oms'));
     }
 

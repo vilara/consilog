@@ -52,8 +52,7 @@
 									style="color: inherit;">{{ $om->nomeOm }}</a></td>
 								<td>{{ $om->siglaOm }}</td>
 								<td>{{ $om->codom }}</td>
-								<td>{{ $om->codoug }}</td>
-								
+								<td>{{ $om->codom }}</td>
 								<td>@forelse ($om->enderecos as $end) @if($loop->last)
 									<center>
 										<a href="{{ route('enderecos.show',$end->id) }}"
@@ -64,8 +63,16 @@
 											title="Inserir endereço"></i></a></center>  @endforelse
 								</td>
 
+								@forelse ($om->enderecos as $end)
+								@if(empty($end->latlong['latitude']))
+								<td><i class="fas fa-globe-americas"  style="color: red;"></i></td>
+								@else
+								<td><a href="{{ route('latlongs.show',$end->latlong['id']) }}" style="color: inherit;" title="Visualizar endereço"><i class="fas fa-globe-americas"></i></a></td>
+								@endif
+								@empty
+								<td><i class="fas fa-globe-americas"  style="color: red;"></i></td>
+								 @endforelse
 
-								<td><i class="fas fa-globe-americas"></i></td>
 						
 
 								<td>

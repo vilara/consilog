@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\latlong;
+use App\endereco;
+use App\om;
 
 class LatLongsController extends Controller
 {
@@ -46,9 +48,11 @@ class LatLongsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(latlong $latlong)
     {
-        //
+    	$end = endereco::find($latlong->endereco_id);
+    	$om = om::find($end->enderecoTipo_id);
+    	return view('latlong.show', compact('latlong', 'end', 'om'));
     }
 
     /**
