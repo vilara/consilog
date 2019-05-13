@@ -43,6 +43,8 @@ Route::get('/usuarios/enderecos/{id}','EnderecosController@CreateEndUsu');
 Route::get('/oms/telefones/{id}','OmsController@omTel');
 Route::get('/oms/telefones/create/{id}','TelefonesController@CreateTelOm');
 Route::get('/oms/enderecos/{id}','EnderecosController@CreateEndOm');
+Route::get('/oms/subordinacao/create/{id}','OmsController@CreateSubordinacaoOm');
+Route::post('/oms/subordinacao/store','OmsController@StoreSubordinacaoOm');
 
 
 Auth::routes();

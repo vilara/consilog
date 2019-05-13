@@ -143,8 +143,14 @@ class TelefonesController extends Controller
     public function destroy($id)
     {
     	$telefone = telefone::find($id);
+    	
     	$telefone->delete();
     	
-    	return redirect ( '/usuarios' )->with ( 'success', 'Telefone de usuário excluído com sucesso!' );
+    	if ($telefone->telefoneTipo_type == 'usuario') {
+    		return redirect ( '/usuarios' )->with ( 'success', 'Telefone do usuário excluído com sucesso!' );
+    	} else {
+    		return redirect ( '/oms' )->with ( 'success', 'Telefone da OM excluído com sucesso!' );
+    	}
+    	
     }
 }

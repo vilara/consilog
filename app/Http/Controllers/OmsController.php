@@ -5,6 +5,7 @@ use App\om;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\telefone;
+use App\comando;
 
 class OmsController extends Controller
 {
@@ -29,6 +30,29 @@ class OmsController extends Controller
     	$oms = om::all();
     	return view ( 'om.create', compact ( 'oms') );
     }
+    
+    /**
+     * Show the form for creating the subordination
+     */
+    
+    public function CreateSubordinacaoOm($id)
+    {
+    	$om = om::find($id);
+    	$cmdo = comando::all();
+    	return view ( 'om.createSubordinacao', compact ( 'om','cmdo') );
+    }
+    
+    public function storeSubordinacaoOm(Request $request)
+    {
+    	
+    	$om = om::find($request->id);
+    	$cmdo = comando::find($request->comando_id);
+    	
+    	$om->comandos()->attach($cmdo->id);
+    	
+    	return redirect ( '/oms' )->with ( 'success', 'Subordinação inserida com sucesso!' );
+    }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -106,8 +130,11 @@ class OmsController extends Controller
     }
     public function destroy(om $om)
     {
+    	
+    	$om->telefones()->delete();
+    	$om->enderecos()->delete();
     	$om->delete();
     	
-    	return redirect ( '/om' )->with ( 'success', 'OM excluída com sucesso!' );
+    	return redirect ( '/oms' )->with ( 'success', 'OM excluída com sucesso!' );
     }
 }

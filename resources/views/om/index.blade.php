@@ -15,6 +15,9 @@
 							
 							<h3>{{ __('OM') }}</h3>
 						</div>
+						
+						
+						
 						<div class="col-md-2" align="right">
 							<a href="{{ route('oms.create') }}" class="btn btn-success">Novo
 						
@@ -53,7 +56,7 @@
 									style="color: inherit;">{{ $om->nomeOm }}</a></td>
 								<td>{{ $om->siglaOm }}</td>
 								<td>{{ $om->codom }}</td>
-								<td>{{ $om->codom }}</td>
+								<td>{{ $om->codoug }}</td>
 								<td>@forelse ($om->enderecos as $end) @if($loop->last)
 									<center>
 										<a href="{{ route('enderecos.show',$end->id) }}"
