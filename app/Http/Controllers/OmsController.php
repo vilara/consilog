@@ -98,6 +98,12 @@ class OmsController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
+    
+    public function omTel($id) {
+    	$telefones = om::find ( $id )->telefones ()->get ();
+    	$om = om::find($id);
+    	return view ( 'telefone.om_tel', compact ( 'telefones','om' ) );
+    }
     public function destroy(om $om)
     {
     	$om->delete();

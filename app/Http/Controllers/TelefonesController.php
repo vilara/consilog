@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\om;
 use App\telefone;
 use App\tipoTel;
 use App\usuario;
@@ -38,6 +39,16 @@ class TelefonesController extends Controller
     	$usuario = User::find ( $id );
     	return view ( 'endereco.create', compact ( 'usuario' ) );
     }
+    
+    
+    public function CreateTelOm($id) {
+    	$secao = secoe::all ();
+    	$telTipo = tipoTel::all();
+    	$om = om::find ( $id );
+    	return view ( 'telefone.createOm', compact ( 'om','secao','telTipo' ) );
+    }
+    
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -61,7 +72,11 @@ class TelefonesController extends Controller
     	$telefone->telefoneTipo_id = $request->id;
     	$telefone->save();
     	
+    	if ($request->tipo == 'usuario') {
     	return redirect ( '/usuarios' )->with ( 'success', 'Telefone do usuário inserido com sucesso!' );
+    	} else {
+    	return redirect ( '/oms' )->with ( 'success', 'Telefone da OM inserido com sucesso!' );
+    	}
     }
 
     /**
@@ -111,6 +126,12 @@ class TelefonesController extends Controller
     	$telefone->save();
     	
     	return redirect ( '/usuarios' )->with ( 'success', 'Telefone do usuário inserido com sucesso!' );
+    }
+    
+    public function omTel($id) {
+    	$telefones = om::find ( $id )->telefones ()->get ();
+    	$om = om::find($id);
+    	return view ( 'telefone.om_tel', compact ( 'telefones','om' ) );
     }
 
     /**

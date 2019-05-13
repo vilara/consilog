@@ -38,6 +38,7 @@
 								<th scope="col">Codom</th>
 								<th scope="col">Codug</th>
 								<th scope="col">Endereços</th>
+								<th scope="col">Telefones</th>
 								<th scope="col">Loc</th>
 								<th scope="col">Ações</th>
 							</tr>
@@ -59,8 +60,22 @@
 											style="color: inherit;" title="Visualizar endereço"><i class="fas fa-home"></i></a>
 									</center> @endif @empty
 									<center>
-										<a href="{{ url('/om/enderecos/'.$om->id) }}" style="color: red;"><i class="fas fa-home"
+										<a href="{{ url('/oms/enderecos/'.$om->id) }}" style="color: red;"><i class="fas fa-home"
 											title="Inserir endereço"></i></a></center>  @endforelse
+								</td>
+								
+								
+									<td>@forelse ($om->telefones as $tel) @if($loop->last)
+									<center>
+										<a href="{{ url('/oms/telefones/'.$om->id) }}"
+											title="Visualizar telefones" style="color: inherit;"><i
+											class="fas fa-phone"></i></a>
+									</center> @endif
+									 @empty
+									<center>
+										<a href="{{ url('/oms/telefones/create/'.$om->id) }}" style="color: red;"><i class="fas fa-phone"
+											title="Inserir telefone"></i></a>
+									</center> @endforelse
 								</td>
 
 								@forelse ($om->enderecos as $end)

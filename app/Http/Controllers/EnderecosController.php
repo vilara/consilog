@@ -30,10 +30,17 @@ class EnderecosController extends Controller {
 		$usu = User::find ( $endereco->enderecoTipo_id );
 		return view ( 'endereco.show', compact ( 'endereco', 'usu') );
 	}
+	
 	public function CreateEndUsu($id) {
 		$usu = User::find ( $id );
 		return view ( 'endereco.create', compact ( 'usu' ) );
 	}
+	
+	public function CreateEndOm($id) {
+		$om = om::find ( $id );
+		return view ( 'endereco.createOm', compact ( 'om' ) );
+	}
+	
 	
 	/**
 	 * Store a newly created resource in storage.
@@ -61,7 +68,12 @@ class EnderecosController extends Controller {
 		$endereco->enderecoTipo_id = $request->id;
 		$endereco->save();
 		
+		if ($request->tipo == 'usuario') {
 		return redirect ( '/usuarios' )->with ( 'success', 'Endereço do usuário inserido com sucesso!' );
+		} else {
+		return redirect ( '/oms' )->with ( 'success', 'Endereço da OM inserido com sucesso!' );
+		}
+		
 	}
 	
 	/**

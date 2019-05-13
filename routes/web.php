@@ -40,6 +40,11 @@ Route::get('/usuarios/telefones/create/{id}','UsuariosController@userTelCreate')
 Route::get('/usuarios/enderecos/{id}','EnderecosController@CreateEndUsu');
 
 
+Route::get('/oms/telefones/{id}','OmsController@omTel');
+Route::get('/oms/telefones/create/{id}','TelefonesController@CreateTelOm');
+Route::get('/oms/enderecos/{id}','EnderecosController@CreateEndOm');
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
