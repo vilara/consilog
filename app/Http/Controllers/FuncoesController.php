@@ -15,9 +15,8 @@ class FuncoesController extends Controller
      */
     public function index()
     {
-        $funcoes = funcoe::find(3)->usuario;
+        $funcoes = funcoe::all();
         return view('funcoes.index', compact('funcoes'));
-        //         return 'funcoes';
     }
 
     /**
@@ -27,7 +26,8 @@ class FuncoesController extends Controller
      */
     public function create()
     {
-        //
+    	$funcoes = funcoe::all();
+    	return view('funcoes.create', compact('funcoes'));
     }
 
     /**
@@ -38,7 +38,13 @@ class FuncoesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    	$funcao = new funcoe();
+    	
+    	$funcao->nomeFuncao = $request->nomeFuncao;
+    	
+    	$funcao->save();
+    	
+    	return redirect ( '/funcoes' )->with ( 'success', 'Função inserida com sucesso!' );
     }
 
     /**
@@ -47,9 +53,9 @@ class FuncoesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(funcoe $funcao)
     {
-        //
+    	return view ( 'funcoes.show', compact ( 'funcao') );
     }
 
     /**
@@ -58,9 +64,9 @@ class FuncoesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(funcoe $funcao)
     {
-        //
+    	return view ( 'funcoes.edit', compact ( 'funcao') );
     }
 
     /**
@@ -70,9 +76,13 @@ class FuncoesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, funcoe $funcao)
     {
-        //
+    	$funcao->nomeFuncao = $request->nomeFuncao;
+    	
+    	$funcao->save();
+    	
+    	return redirect ( '/funcoes' )->with ( 'success', 'Função editada com sucesso!' );
     }
 
     /**
@@ -81,8 +91,9 @@ class FuncoesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(funcoe $funcao)
     {
-        //
+    	$funcao->delete();
+    	return redirect ( '/funcoes' )->with ( 'success', 'Função excluída com sucesso!' );
     }
 }

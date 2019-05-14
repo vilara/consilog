@@ -22,7 +22,9 @@ Route::resource('/enderecos','EnderecosController');
 Route::resource('/latlongs','LatLongsController');
 Route::resource('/cidades','CidadesController');
 Route::resource('/estados','EstadosController');
-Route::resource('/funcoes','FuncoesController');
+Route::resource('/funcoes','FuncoesController')->parameters([
+		'funcoes' => 'funcao'
+]); // muda o nome do parametro dos controllers --- nome do objeto tem que ser igual a "funcao"
 Route::resource('/secoes','SecoesController');
 Route::resource('/logins','LoginsController');
 Route::resource('/civis','CivisController');

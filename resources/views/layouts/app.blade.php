@@ -36,6 +36,7 @@
             <a  class="dropdown-item"  href="{{ route('usuarios.index') }}">Usuários</a>
             <a  class="dropdown-item"  href="{{ route('comandos.index') }}">Comandos</a>
             <a  class="dropdown-item"  href="{{ route('oms.index') }}">OM</a>
+            <a  class="dropdown-item"  href="{{ route('funcoes.index') }}">Funções</a>
         </div>
       </li>
       
