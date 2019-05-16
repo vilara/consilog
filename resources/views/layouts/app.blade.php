@@ -37,6 +37,7 @@
             <a  class="dropdown-item"  href="{{ route('comandos.index') }}">Comandos</a>
             <a  class="dropdown-item"  href="{{ route('oms.index') }}">OM</a>
             <a  class="dropdown-item"  href="{{ route('funcoes.index') }}">Funções</a>
+            <a  class="dropdown-item"  href="{{ route('secoes.index') }}">Seções</a>
         </div>
       </li>
       

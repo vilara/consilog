@@ -51,7 +51,7 @@
 							@foreach ($oms as $om)
 							<tr>
 								
-																	
+														
 								<td><a href="{{ route('oms.show',$om->id)}}"
 									style="color: inherit;">{{ $om->nomeOm }}</a></td>
 								<td>{{ $om->siglaOm }}</td>

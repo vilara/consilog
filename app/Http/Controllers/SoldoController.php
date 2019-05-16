@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\soldo;
 use Illuminate\Http\Request;
-use App\secoe;
 
-class SecoesController extends Controller
+class SoldoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class SecoesController extends Controller
      */
     public function index()
     {
-        $seco = secoe::all();
-        return view('secoes.index', compact('seco'));
+        //
     }
 
     /**
@@ -25,8 +24,7 @@ class SecoesController extends Controller
      */
     public function create()
     {
-    	$seco = secoe::all();
-    	return view('secoes.create', compact('seco'));
+        //
     }
 
     /**
@@ -35,63 +33,53 @@ class SecoesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, secoe $seco)
+    public function store(Request $request)
     {
-    	
-    	$seco->nomeSecao = $request->nomeSecao;
-    	
-    	$seco->save();
-    	
-    	return redirect ( '/secoes' )->with ( 'success', 'Seção inserida com sucesso!' );
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\soldo  $soldo
      * @return \Illuminate\Http\Response
      */
-    public function show(secoe $seco)
+    public function show(soldo $soldo)
     {
-    	return view('secoes.show', compact('seco'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\soldo  $soldo
      * @return \Illuminate\Http\Response
      */
-    public function edit(secoe $seco)
+    public function edit(soldo $soldo)
     {
-    	return view('secoes.edit', compact('seco'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\soldo  $soldo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, secoe $seco)
+    public function update(Request $request, soldo $soldo)
     {
-    	$seco->nomeSecao = $request->nomeSecao;
-    	
-    	$seco->save();
-    	
-    	return redirect ( '/secoes' )->with ( 'success', 'Seção editada com sucesso!' );
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\soldo  $soldo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(secoe $seco)
+    public function destroy(soldo $soldo)
     {
-    	$seco->delete();
-    	return redirect ( '/secoes' )->with ( 'success', 'Seção excluída com sucesso!' );
+        //
     }
 }

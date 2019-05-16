@@ -32,7 +32,7 @@ class om extends Model
      */
     public function comandos()
     {
-    	return $this->belongsToMany('App\comando');
+    	return $this->belongsToMany('App\comando')->withPivot('omds');
     }
     
 //     public function usuarios(){

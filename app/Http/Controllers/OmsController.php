@@ -48,7 +48,7 @@ class OmsController extends Controller
     	$om = om::find($request->id);
     	$cmdo = comando::find($request->comando_id);
     	
-    	$om->comandos()->attach($cmdo->id);
+    	$om->comandos()->attach([$cmdo->id => ['omds' => $request->omds]]);
     	
     	return redirect ( '/oms' )->with ( 'success', 'Subordinação inserida com sucesso!' );
     }

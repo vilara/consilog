@@ -28,13 +28,14 @@
  
  <form class="form-horizontal" action="{{ route('secoes.update', $seco->id) }}" method="post">
 					 @csrf
-					  @method('PATCH')
+					  @method('POST')
+					  <input type="hidden" class="form-control" name="roles" value="1">
 						<div class="form-row">
 						
 													
     						<div class="form-group col-md-6" >
     							<label for="nomeSecao">Nome seção</label>
-        						<input type="text" class="form-control" name="nomeSecao"	id="nomeSecao"  value="{{$seco->nomeSecao}}">
+        						<input type="text" class="form-control" name="nomeSecao"	id="nomeSecao" disabled="disabled" value="{{$seco->nomeSecao}}">
         						<small id="nomeSecao" class="form-text text-muted">Sem abreviaturas!</small>
     						</div>
 						
@@ -42,16 +43,20 @@
 						</div>
 						
 						
- <hr>
+					
 						
-			
-						
-							
-							
-							
-							<button type="submit" class="btn btn-success">
-                                    {{ __('Editar') }}
-                                </button>				
+	
+       						  <div class="row">
+  <div class="col-md-2">
+  <a href="{{ route('secoes.edit',$seco->id) }}" type="submit" class="btn btn-success">  {{ __('Editar') }}   </a>
+  </div>
+  <div class="col-md-1">
+  <form class="form-inline" action="{{ route('secoes.destroy',$seco->id) }}"	method="post">
+												@csrf @method('DELETE')
+												<button class="btn btn-success" type="submit"  align="left"> {{ __('Excluir') }} </button>
+											</form>
+  </div>
+  </div>			
   </form> 
 							
 </div>

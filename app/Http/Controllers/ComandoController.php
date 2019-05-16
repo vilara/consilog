@@ -17,6 +17,12 @@ class ComandoController extends Controller
     	$comandos = comando::all();
     	return view('comando.index', compact('comandos'));
     }
+    
+    public function showSubordinadas($id)
+    {
+    	$cmdsu = comando::find($id);
+    	return view('comando.showSubordinadas', compact('cmdsu'));
+    }
 
     /**
      * Show the form for creating a new resource.

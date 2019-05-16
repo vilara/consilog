@@ -1,0 +1,23 @@
+General-de-ExÇrcito;Gen Ex;1;OFICIAIS-GENERAIS
+General-de-Divis∆o;Gen Div;2;OFICIAIS-GENERAIS
+General-de-Brigada;Gen Bda;3;OFICIAIS-GENERAIS
+Coronel;Cel;4;OFICIAIS SUPERIORES
+Tenente-Coronel;Ten Cel;5;OFICIAIS SUPERIORES
+Major;Maj;6;OFICIAIS SUPERIORES
+Capit∆o;Cap;7;OFICIAIS INTERMEDIµRIOS
+Primeiro-Tenente;1ß Ten;8;OFICIAIS SUBALTERNOS
+Segundo-Tenente;2ß Ten;9;OFICIAIS SUBALTERNOS
+Aspirante-a-Oficial;Asp Of;10;PRAÄAS ESPECIAIS
+Alunos do CPOR;Al CPOR;11;PRAÄAS ESPECIAIS
+Aluno da EsPCEx;Al EsPCEx;12;PRAÄAS ESPECIAIS
+Subtenente;S Ten;13; PRAÄAS GRADUADAS
+Primeiro-Sargento;1ß Sgt;14; PRAÄAS GRADUADAS
+Segundo-Sargento;2ß Sgt;15; PRAÄAS GRADUADAS
+Terceiro-Sargento;3ß Sgt;16; PRAÄAS GRADUADAS
+Cabo NB e Taifeiro-Mor;Cb NB;17; PRAÄAS GRADUADAS
+Cabo EV;Cb EV;18; PRAÄAS GRADUADAS
+Taifeiro de 1a Classe;Taif 1¶ Cl;19;DEMAIS PRAÄAS
+Taifeiro de 2a Classe;Taif 2¶ Cl;20;DEMAIS PRAÄAS
+Soldado de 1a Classe (especializados);Sd NB Esp;21;DEMAIS PRAÄAS
+Soldado de 1a Classe (n∆o especializado);Sd NB NEsp;22;DEMAIS PRAÄAS
+Soldado EV;Sd EV;23;DEMAIS PRAÄAS
