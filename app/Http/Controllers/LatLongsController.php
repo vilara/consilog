@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use FarhanWazir\GoogleMaps\GMaps;
 use Illuminate\Http\Request;
 use App\latlong;
 use App\endereco;
@@ -17,6 +18,7 @@ class LatLongsController extends Controller
     public function index()
     {
         $latlongs = latlong::all();
+        
         return view('latlong.index', compact('latlongs'));
 //         return 'latlongs';
     }
@@ -26,11 +28,17 @@ class LatLongsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+    	
+    	$id = $request->id;
+    	return view('latlong.create', compact('id'));
     }
 
+    public function createLatlongOm($id)
+    {
+    	return view('latlong.create', compact('id'));
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -39,7 +47,14 @@ class LatLongsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    	$latlong = new latlong();
+    	$latlong->latitude = $request->latitude;
+    	$latlong->longitude = $request->latitude;
+    	$latlong->endereco_id = $request->id;
+    	
+    	$latlong->save();
+    	
+    	return redirect ( '/oms' )->with ( 'success', 'Coordenada inserida com sucesso!' );
     }
 
     /**
@@ -50,9 +65,29 @@ class LatLongsController extends Controller
      */
     public function show(latlong $latlong)
     {
+    	$config = array();
+    	$config['center'] = '-23.955997, -46.351073';
+    	$config['zoom'] = '7';
+    	$config['map_height'] = '500px';
+    	$config['geocodeCaching'] = true;
+    	
+    	
+    	$gmap = new GMaps();
+    	$gmap->initialize($config);
+    	
+    	
+    	$marker = array();
+    	
+    	
+    	
+    	
+    	$map = new GMaps();
+    	
+    	
+    	
     	$end = endereco::find($latlong->endereco_id);
     	$om = om::find($end->enderecoTipo_id);
-    	return view('latlong.show', compact('latlong', 'end', 'om'));
+    	return view('latlong.show', compact('latlong', 'end', 'om', 'gmap', 'map', 'marker'));
     }
 
     /**
@@ -61,9 +96,9 @@ class LatLongsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(latlong $latlong)
     {
-        //
+    	return view('latlong.edit', compact('latlong'));
     }
 
     /**
@@ -73,9 +108,15 @@ class LatLongsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, latlong $latlong)
     {
-        //
+    	
+    	$latlong->latitude = $request->latitude;
+    	$latlong->longitude = $request->longitude;
+    	
+    	$latlong->save();
+    	
+    	return redirect ( '/latlongs' )->with ( 'success', 'Coordenada editada com sucesso!' );
     }
 
     /**
@@ -84,8 +125,9 @@ class LatLongsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(latlong $latlong)
     {
-        //
+    	$latlong->delete();
+    	return redirect ( '/latlongs' )->with ( 'success', 'Coordenada excluída com sucesso!' );
     }
 }

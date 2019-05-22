@@ -40,35 +40,29 @@
 
 						<tbody align="center">
 						@php
-							$teste = array();
+							$teste = [];
+							$idd = [];
 						@endphp
 						@foreach($cmdsu->oms as $om)
-								@if($om->pivot['omds'] == 1)
-							<tr><td>{{ $om->nomeOm }}</td></tr>
-								@elseif($om->pivot['omds'] == 0)
-								@php 
-								$teste =	App\om::find(7)->comandos()->get();
+							@if($om->pivot['omds'] == 1)
+						<tr><td>{{ $om->nomeOm }}</td></tr>
+							@endif
+						@foreach($om->comandos as $cmd)
+							@if($cmd->nomeCmdo != $cmdsu->nomeCmdo)
+								@php
+								  $teste[] = $cmd->nomeCmdo;
+								  $idd[] = $cmd->id;
 								@endphp
-								@endif
+							@endif
 						@endforeach
-						@for ($i = 0; $i < count($teste); $i++)
-   							<tr><td>
-   							
-   							
-   							<table class="table table-bordered">
-								<thead class="thead-soft" align="center">
-								<tr>
-								<th scope="col"><a href="{{ url('/comandos/subordinados/'.$teste[$i]->id) }}">{{ $teste[$i]->nomeCmdo }}</th>
-							</tr>
-						</thead>
-
-						<tbody align="center">
-   							<tr><td>teste</td></tr>
-   						</tbody>
-   						</table>	
-   							
-   							</td></a></tr>
+						
+								
+						@endforeach
+						@php $result = array_unique($teste);  $id = array_unique($idd); @endphp
+						@for ($i = 0; $i < count($result); $i++)
+							<tr><td>{{ $result[$i] }}</td></tr>
 						@endfor
+			
 						</tbody>
 					</table>
 

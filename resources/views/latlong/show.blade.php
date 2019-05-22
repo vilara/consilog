@@ -34,7 +34,7 @@
 						
 													
     						<div class="form-group col-md-6" >
-    							<label for="nomeOm">Latitude</label>
+    							<label for="nomeOm">Latitudes</label>
         						<input type="text" class="form-control" name="nomeOm"	id="nomeOm" disabled="disabled" value="{{$latlong->latitude}}">
         						<small id="nomeOm" class="form-text text-muted">Sem abreviaturas!</small>
     						</div>
@@ -64,6 +64,23 @@
 							
 </div>
 	</div>
+	
+	@php
+	
+    	$marker['position'] = $latlong->latitude.','.$latlong->longitude;
+    	$marker['infowindow_content'] = 'Brasil';
+    	$marker['visible'] = true;
+    	$marker['icon'] = 'http://chart.apis.google.com/chart?chst=d_map_spin&chld=1.0|0|F5DEB3|12|_|'.$om->siglaOm;
+    	$gmap->add_marker($marker);
+    	
+    	$map = $gmap->create_map();
+    	
+	
+	@endphp
+	
+	 {!! $map['js'] !!}
+	 
+	  {!! $map['html'] !!}
 		
 		
 		

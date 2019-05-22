@@ -54,6 +54,11 @@ Route::post('/oms/subordinacao/store','OmsController@StoreSubordinacaoOm');
 
 Route::get('/comandos/subordinados/{id}','ComandoController@showSubordinadas');
 
+// views Latlongs 
+
+Route::get('/latlongs/create/{id}','LatLongsController@createLatlongOm');
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -77,6 +82,7 @@ Route::get('/mapa', function (){
 	$marker['position'] = '-23.955997, -46.351073';
 	$marker['infowindow_content'] = 'Brasil';
 	$marker['visible'] = true;
+	$marker['icon'] = 'http://chart.apis.google.com/chart?chst=d_map_spin&chld=1.0|0|006400|12|_|55';
 	$gmap->add_marker($marker);
 	
 	$marker['position'] = '-22.955997, -46.351073';
