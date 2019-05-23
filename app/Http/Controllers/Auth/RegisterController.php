@@ -61,8 +61,13 @@ class RegisterController extends Controller
         		'sexo' => ['required'],
         		'funcoe_id' => ['required'],
         		'om_id' => ['required'],
+        ],[
+        		'name.required' => ' O nome é obrigatório.',
+        		
         ]);
     }
+    
+ 
 
     /**
      * Create a new user instance after a valid registration.

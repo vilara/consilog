@@ -45,15 +45,15 @@
 						@endphp
 						@foreach($cmdsu->oms as $om)
 						
-						@foreach ($om->enderecos as $end)
-						@php
-						$marker['position'] = $end->latlong['latitude'].','. $end->latlong['longitude'];
-				    	$marker['infowindow_content'] = 'Brasil';
-				    	$marker['visible'] = true;
-				    	$marker['icon'] = 'http://chart.apis.google.com/chart?chst=d_map_spin&chld=1.0|0|F5DEB3|12|_|'.$om->siglaOm;
-				    	$gmap->add_marker($marker);
-						@endphp
-						@endforeach
+							@foreach ($om->enderecos as $end)
+								@php
+									$marker['position'] = $end->latlong['latitude'].','. $end->latlong['longitude'];
+							    	$marker['infowindow_content'] = 'Brasil';
+							    	$marker['visible'] = true;
+							    	$marker['icon'] = 'http://chart.apis.google.com/chart?chst=d_map_spin&chld=1.0|0|F5DEB3|12|_|'.$om->siglaOm;
+							    	$gmap->add_marker($marker);
+								@endphp
+							@endforeach
 						
 						
 						
