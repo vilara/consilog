@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\comando;
+use FarhanWazir\GoogleMaps\GMaps;
 use Illuminate\Http\Request;
 
 class ComandoController extends Controller
@@ -20,8 +21,28 @@ class ComandoController extends Controller
     
     public function showSubordinadas($id)
     {
+    	
+    	$config = array();
+    	$config['center'] = '-23.955997, -46.351073';
+    	$config['zoom'] = '7';
+    	$config['map_height'] = '500px';
+    	$config['geocodeCaching'] = true;
+    	
+    	
+    	$gmap = new GMaps();
+    	$gmap->initialize($config);
+    	
+    	
+    	$marker = array();
+    	
+    	
+    	
+    	
+    	$map = new GMaps();
+    	
+    	
     	$cmdsu = comando::find($id);
-    	return view('comando.showSubordinadas', compact('cmdsu'));
+    	return view('comando.showSubordinadas', compact('cmdsu', 'gmap', 'map', 'marker'));
     }
 
     /**
