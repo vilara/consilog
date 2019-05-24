@@ -24,32 +24,74 @@ class UpdateUsuarioPut extends FormRequest
     public function rules()
     {
     	return [
-    			'name' => 'required|max:255',
-    			'nomeGuerra' => 'required',
-    			'cpf' => 'required|numeric',
-    			'idt' => 'required|numeric',
-    			'email' => 'required|email',
-    			'sexo' => 'required',
-    			'funcoe_id' => 'required',
-    			'om_id' => 'required',
+    			'postograd_id' => [
+    					'bail',
+    					'required'
+    			],
+    			'name' => [
+    					'required',
+    					'string',
+    					'max:255'
+    			],
+    			'nomeGuerra' => [
+    					'required',
+    					'string',
+    					'max:255'
+    			],
+    			'cpf' => [
+    					'required',
+    					'numeric',
+    					
+    					'digits:11'
+    			],
+    			'idt' => [
+    					'required',
+    					'numeric'
+    			],
+    			'email' => [
+    					'required',
+    					'email',
+    					'max:255',
+    					
+    			],
+    			'om_id' => [
+    					'required'
+    			],
+    			'funcoe_id' => [
+    					'required'
+    			],
+    			'sexo' => [
+    					'required'
+    			],
+    			'situacao' => [
+    					'required'
+    			],
+    			
     	];
     }
     
     public function messages()
     {
     	return [
-    			'nomeCompleto.required' => 'Preencha o campo nome Completo',
-    			'nomeGuerra.required'  => 'Preencha o campo nome de Guerra',
-    			'cpf.required' => 'Preencha o campo CPF',
-    			'cpf.numeric' => 'O CPF deve ser preenchido apenas com números',
-    			'idt.required' => 'Preencha o campo identidade militar',
-    			'idt.numeric' => 'A Idt deve ser preenchida apenas com números',
-    			'email.required' => 'Preencha o campo E-mail',
-    			'email.email' => 'Email inválido',
-    			'email.unique' => 'E-mail já cadastrado',
-    			'sexo.required' => 'Selecione seu sexo',
-    			'funcoe_id.required' => 'Selecione sua função',
-    			'om_id.required' => 'Selecione sua OM',
+    			'postograd_id.required' => 'Favor escolher um posto ou graduação',
+    			'name.required' => 'O Campo nome é obrigatório.',
+    			'name.string' => ' O Campo nome pode conter somente letras.',
+    			'nomeGuerra.required' => 'O Campo nome de guerra é obrigatório.',
+    			'cpf.required' => 'O Campo CPF é obrigatório.',
+    			'cpf.numeric' => 'O Campo CPF deve ser preenchido apenas com números.',
+    			'cpf.digits' => 'O Campo cpf deve conter 11 números.',
+    			'idt.required' => 'O Campo identidade é obrigatório.',
+    			'idt.numeric' => 'O Campo identidade deve ser preenchido apenas com números.',
+    			'email.required' => 'O Campo e-mail é obrigatório.',
+    			'email.email' => 'Campo e-mail inválido.',
+    			'email.unique' => 'Email já cadastrado.',
+    			'om_id.required' => 'Favor escolher uma OM',
+    			'funcoe_id.required' => 'Favor escolher uma Função',
+    			'sexo.required' => 'Favor selecione seu gênero',
+    			'situacao.required' => 'Favor selecione sua situação',
+    			'password.required' => 'O Campo senha é obrigatório.',
+    			'password.min' => 'O Campo senha deve ser preenchido com no mínimo 06 caracteres.',
+    			'password.confirmed' => 'Favor confirmar a senha corretamente.',
     			
     	];
     }

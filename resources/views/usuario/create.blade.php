@@ -37,8 +37,9 @@
 							<div class="form-group col-md-2">
     							<label for="postograd_id">Posto/Grad</label>
 									<select	class="form-control" id="postograd_id" name="postograd_id">
+											<option value="">Selecione</option>
 											@foreach ($pgs as $pg)
-												@if (old('funcoe_id')== $pg->id )
+												@if (old('postograd_id')== $pg->id )
 											<option value="{{ $pg->id }}" selected="selected">{{$pg->siglaPg}}</option>
 												@else
 											<option value="{{ $pg->id }}">{{$pg->siglaPg}}</option>
