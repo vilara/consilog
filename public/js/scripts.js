@@ -1,5 +1,6 @@
 $(document).ready(function() {
-
+		 $('#codom').mask('999999');
+		 $('#codoug').mask('999999');
 	// Acesso ao webservice dos correios inicio
 	// -------------------------------------------------------------
 

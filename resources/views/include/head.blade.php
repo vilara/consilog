@@ -15,6 +15,7 @@
 <script src="{!!URL('/js/scripts.js')!!}"></script>
 <script src="{!!URL('/js/bootstrap.min.js')!!}"></script>
 <script src="{!!URL('/js/bootbox.js')!!}"></script>
+<script src="{!!URL('/js/mask.js')!!}"></script>
 
 
 

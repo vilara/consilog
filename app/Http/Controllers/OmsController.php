@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\telefone;
 use App\comando;
+use App\Http\Requests\StoreOmPost;
+use App\Http\Requests\StoreUsuarioPost;
 
 class OmsController extends Controller
 {
@@ -60,16 +62,9 @@ class OmsController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreOmPost $request, om $om)
     {
-    	$om = new om();
-    	
-    	$om->nomeOm = $request->nomeOm;
-    	$om->siglaOm = $request->siglaOm;
-    	$om->codom = $request->codom;
-    	$om->codoug = $request->codoug;
-    	
-    	$om->save();
+    	$om->create($request->all());   	
     	
     	return redirect ( '/oms' )->with ( 'success', 'OM inserida com sucesso!' );
     }

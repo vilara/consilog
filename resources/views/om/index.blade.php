@@ -83,12 +83,12 @@
 
 								@forelse ($om->enderecos as $end)
 								@if(empty($end->latlong['latitude']))
-								<td><a href="{{ url('/latlongs/create/'.$end->id) }}" style="color: inherit;" title="Visualizar endereço"><i class="fas fa-globe-americas"  style="color: red;"></i></a></td>
+								<td><a href="{{ url('/latlongs/create/'.$end->id) }}" style="color: red;" title="Inserir localização"><i class="fas fa-globe-americas"  style="color: red;"></i></a></td>
 								@else
 								<td><a href="{{ route('latlongs.show',$end->latlong['id']) }}" style="color: inherit;" title="Visualizar endereço"><i class="fas fa-globe-americas"></i></a></td>
 								@endif
 								@empty
-								<td><i class="fas fa-globe-americas"  style="color: red;"></i></td>
+								<td><i class="fas fa-globe-americas"  style="color: red;" title="Favor inserir endereço inicialmente"></i></td>
 								 @endforelse
 
 						

@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class om extends Model
 {
 	
+	protected $fillable = [
+			'nomeOm',
+			'siglaOm',
+			'codom',
+			'codoug'
+	];
+	
 	/**
 	 * Polymorphic Relationships
 	 * @return \Illuminate\Database\Eloquent\Relations\MorphMany
