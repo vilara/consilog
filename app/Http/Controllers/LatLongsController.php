@@ -37,7 +37,10 @@ class LatLongsController extends Controller
 
     public function createLatlongOm($id)
     {
-    	return view('latlong.create', compact('id'));
+		
+    	$end = endereco::find($id);
+    	$om = om::all()->where("id",8);
+    	return view('latlong.create', compact('id','om'));
     }
     /**
      * Store a newly created resource in storage.

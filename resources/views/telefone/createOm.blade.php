@@ -57,6 +57,7 @@
 							<div class="form-group col-md-6">
     							<label for="telTipo_id">Tipo</label>
     							<select class="form-control" id="tipotel_id" name="tipotel_id">
+    							<option value="">Selecione</option>
 										@foreach ($telTipo as $tipo)
 										<option value="{{ $tipo->id }}">{{$tipo->telTipo}}</option>
 										@endforeach
@@ -66,7 +67,7 @@
 							<div class="form-group col-md-6">
     							<label for="estado">Seção</label>
 	    							<select class="form-control" id="secoe_id" name="secoe_id">
-										@foreach ($secao as $sec)
+									<option value="">Selecione</option> @foreach ($secao as $sec)
 										<option value="{{ $sec->id }}">{{$sec->nomeSecao}}</option>
 										@endforeach
 									</select>

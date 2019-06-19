@@ -42,7 +42,7 @@ class StoreOmPost extends FormRequest {
 	public function messages() {
 		return [ 
 				'nomeOm.required' => 'Preencha o campo nome da OM',
-				'siglaOm.required' => 'Preencha o campo nome da OM',
+				'siglaOm.required' => 'Preencha o campo sigla da OM',
 				'codom.required' => 'Preencha o campo Codom da OM',
 				'codom.digits' => 'O campo Codom necessita ser preenchido com 6 dígitos',
 				'codoug.required' => 'Preencha o campo Codug da OM',

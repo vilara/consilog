@@ -36,13 +36,9 @@ class FuncoesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, funcoe $funcao)
     {
-    	$funcao = new funcoe();
-    	
-    	$funcao->nomeFuncao = $request->nomeFuncao;
-    	
-    	$funcao->save();
+    	$funcao->create($request->all());
     	
     	return redirect ( '/funcoes' )->with ( 'success', 'Função inserida com sucesso!' );
     }
@@ -79,6 +75,7 @@ class FuncoesController extends Controller
     public function update(Request $request, funcoe $funcao)
     {
     	$funcao->nomeFuncao = $request->nomeFuncao;
+    	$funcao->abrevFuncao = $request->abrevFuncao;
     	
     	$funcao->save();
     	

@@ -19,7 +19,9 @@
  <div class="card-header">
  <div class="row">
  <div class="col-md-10">
- <h3>{{ __('Cadastro') }}</h3> 
+ 
+
+ <h3>Cadastrar localização de {{ $om->siglaOm}}</h3> 
  </div>
  <div class="col-md-2" align="right">
  <a href="{{url('/latlongs')}}" class="btn btn-success" >Lista</a></div>

@@ -39,6 +39,10 @@
         						<small id="nomeFuncao" class="form-text text-muted">Sem abreviaturas!</small>
     						</div>
 						
+    						<div class="form-group col-md-6" >
+    							<label for="abrevFuncao">Abreviatura da Função</label>
+        						<input type="text" class="form-control" name="abrevFuncao"	id="abrevFuncao" disabled="disabled" value="{{$funcao->abrevFuncao}}">
+    						</div>
     						
 						</div>
 						

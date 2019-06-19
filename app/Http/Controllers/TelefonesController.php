@@ -9,6 +9,7 @@ use App\telefone;
 use App\tipoTel;
 use App\usuario;
 use App\secoe;
+use App\Http\Requests\StoreTelUsu;
 
 class TelefonesController extends Controller
 {
@@ -55,12 +56,10 @@ class TelefonesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTelUsu $request, telefone $telefone)
     {
-    	$telefone = new telefone();
-    	
-    	$telefone->ddd = $request->ddd;
-    	$telefone->numero = $request->numero;
+    	$telefone->ddd = str_replace(array("(", ")"), "", $request->ddd);
+    	$telefone->numero = str_replace("-", "", $request->numero);
     	$telefone->secoe_id = $request->secoe_id;
     	$telefone->tipotel_id = $request->tipotel_id;
     	if ($request->tipo == 'usuario') {
@@ -77,6 +76,7 @@ class TelefonesController extends Controller
     	} else {
     	return redirect ( '/oms' )->with ( 'success', 'Telefone da OM inserido com sucesso!' );
     	}
+    	
     }
 
     /**
@@ -117,15 +117,15 @@ class TelefonesController extends Controller
     {
     	$telefone = telefone::find($id);
     	
-    	$telefone->ddd = $request->ddd;
-    	$telefone->numero = $request->numero;
+    	$telefone->ddd =str_replace(array("(", ")"), "", $request->ddd);
+    	$telefone->numero = str_replace("-", "", $request->numero);
     	$telefone->secoe_id = $request->secoe_id;
     	$telefone->tipotel_id = $request->tipotel_id;
     	    	
     	
     	$telefone->save();
     	
-    	return redirect ( '/usuarios' )->with ( 'success', 'Telefone do usuário inserido com sucesso!' );
+    	return redirect ( '/usuarios' )->with ( 'success', 'Telefone do usuário editado com sucesso!' );
     }
     
     public function omTel($id) {

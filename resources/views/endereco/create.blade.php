@@ -76,7 +76,7 @@
 						
     						<div class="form-group col-md-2">
     							<label for="estado">Estado</label>
-        						<input type="type"	class="form-control" id="estado" name="estado">
+        						<input type="type"	class="form-control" id="estado" name="estado"  value="{{old('estado')}}">
     						</div>
 						</div>
 						

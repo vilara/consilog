@@ -39,12 +39,14 @@
 						<div class="form-row">
     						<div class="form-group col-md-4" >
     							<label for="ddd">DDD</label>
-        						<input type="text" class="form-control" name="ddd"	id="ddd" >
+        						<input type="text" class="form-control" name="ddd"	id="ddd"
+        						 value="{{old('ddd')}}"
+        						 >
     						</div>
 						
     						<div class="form-group col-md-8">
         						<label for="numero">Número</label>
-        						<input type="text" class="form-control" name="numero" id="numero"  >
+        						<input type="text" class="form-control" name="numero" id="numero" value="{{old('numero')}}">
     						</div>
 						</div>
 						
@@ -57,8 +59,13 @@
 							<div class="form-group col-md-6">
     							<label for="telTipo_id">Tipo</label>
     							<select class="form-control" id="tipotel_id" name="tipotel_id">
+    									<option value="">Selecione...</option>
 										@foreach ($telTipo as $tipo)
+    									@if (old('tipotel_id') == $tipo->id )
+										<option value="{{ $tipo->id }}" selected="selected">{{$tipo->telTipo}}</option>
+										@else
 										<option value="{{ $tipo->id }}">{{$tipo->telTipo}}</option>
+										@endif
 										@endforeach
 									</select>
 							</div>
@@ -66,8 +73,13 @@
 							<div class="form-group col-md-6">
     							<label for="estado">Seção</label>
 	    							<select class="form-control" id="secoe_id" name="secoe_id">
+    									<option value="">Selecione...</option>
 										@foreach ($secao as $sec)
+										@if (old('secoe_id') == $sec->id )
+										<option value="{{ $sec->id }}" selected="selected">{{$sec->nomeSecao}}</option>
+										@else
 										<option value="{{ $sec->id }}">{{$sec->nomeSecao}}</option>
+										@endif
 										@endforeach
 									</select>
 							</div>

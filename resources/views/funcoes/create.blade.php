@@ -42,6 +42,11 @@
     						</div>
 						
     					
+    						<div class="form-group col-md-6" >
+    							<label for="abrevFuncao">Abreviatura da Função</label>
+        						<input type="text" class="form-control" name="abrevFuncao"	id="abrevFuncao" placeholder="" value="{{old('abrevFuncao')}}">
+    						</div>
+						
 						</div>
 						
 				

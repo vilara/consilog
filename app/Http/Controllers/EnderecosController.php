@@ -48,9 +48,31 @@ class EnderecosController extends Controller {
 	 * @param \Illuminate\Http\Request $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store(Request $request) {
+	public function store(Request $request, endereco $endereco) {
 		
-		$endereco = new endereco ();
+		// Validação
+		$this->validate($request, [
+				'rua' => 'required|min:3',
+				'numeroEndereco' => 'required',
+				'cep' => 'required',
+				'bairro' => 'required',
+				'cidade' => 'required',
+				'estado' => 'required',
+// 				'cpf' => 'min:11|max:11|unique:clientes',
+// 				'nascimento' => 'date|date_format:Y-m-d' // nullable| torna opcional
+		],[ // Mensagens
+				'rua.required' => ' O campo Logradouro (nome da rua) é obrigatório.',
+				'numeroEndereco.required' => ' O campo número é obrigatório.',
+				'cep.required' => ' O campo CEP é obrigatório.',
+				'bairro.required' => ' O campo Bairro é obrigatório.',
+				'cidade.required' => ' O campo Cidade é obrigatório.',
+				'estado.required' => ' O campo Estado é obrigatório.',
+				'estado.regex' => ' O campo Estado deve conter dois caracteres.',
+// 				'cpf.required' => ' O CPF é obrigatório.',
+// 				'cpf.min' => ' O CPF precisa ter 11 dígitos.',
+// 				'nascimento.date' => 'Nascimento precisa ter uma data válida e Y-m-d'
+		]);
+		
 		
 		$endereco->rua = $request->rua;
 		$endereco->numeroEndereco = $request->numeroEndereco;
