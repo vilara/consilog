@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\secoe;
+use App\Http\Requests\StoreSecao;
 
 class SecoesController extends Controller
 {
@@ -35,12 +36,10 @@ class SecoesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, secoe $seco)
+    public function store(StoreSecao $request, secoe $seco)
     {
     	
-    	$seco->nomeSecao = $request->nomeSecao;
-    	
-    	$seco->save();
+    	$seco->create($request->all());
     	
     	return redirect ( '/secoes' )->with ( 'success', 'Seção inserida com sucesso!' );
     }
@@ -74,9 +73,10 @@ class SecoesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, secoe $seco)
+    public function update(StoreSecao $request, secoe $seco)
     {
     	$seco->nomeSecao = $request->nomeSecao;
+    	$seco->abrevSecao = $request->abrevSecao;
     	
     	$seco->save();
     	

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\funcoe;
 use App\usuario;
+use App\Http\Requests\StoreFuncoe;
 
 class FuncoesController extends Controller
 {
@@ -36,7 +37,7 @@ class FuncoesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, funcoe $funcao)
+    public function store(StoreFuncoe $request, funcoe $funcao)
     {
     	$funcao->create($request->all());
     	
@@ -72,7 +73,7 @@ class FuncoesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, funcoe $funcao)
+    public function update(StoreFuncoe $request, funcoe $funcao)
     {
     	$funcao->nomeFuncao = $request->nomeFuncao;
     	$funcao->abrevFuncao = $request->abrevFuncao;

@@ -11,7 +11,12 @@
 		<div class="col-md-8">
 		
 		
-		
+@if (count($errors) > 0)
+
+@foreach ($errors->all() as $error)
+<p class="alert alert-danger">{{ $error }}</p>
+@endforeach
+@endif
 		
 		 <div class="card">
  <div class="card-header">
@@ -36,6 +41,11 @@
     							<label for="nomeSecao">Nome seção</label>
         						<input type="text" class="form-control" name="nomeSecao"	id="nomeSecao"  value="{{$seco->nomeSecao}}">
         						<small id="nomeSecao" class="form-text text-muted">Sem abreviaturas!</small>
+    						</div>
+    						
+    						<div class="form-group col-md-6" >
+    							<label for="abrevSecao">Abreviatura da seção</label>
+        						<input type="text" class="form-control" name="abrevSecao"	id="abrevSecao" placeholder="" value="{{$seco->abrevSecao}}">
     						</div>
 						
     						

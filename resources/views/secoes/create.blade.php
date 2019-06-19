@@ -41,6 +41,10 @@
         						<small id="nomeSecao" class="form-text text-muted">Sem abreviaturas!</small>
     						</div>
 						
+    						<div class="form-group col-md-6" >
+    							<label for="abrevSecao">Abreviatura da seção</label>
+        						<input type="text" class="form-control" name="abrevSecao"	id="abrevSecao" placeholder="" value="{{old('abrevSecao')}}">
+    						</div>
     					
 						</div>
 						
