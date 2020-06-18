@@ -42,6 +42,18 @@ class om extends Model
     	return $this->belongsToMany('App\comando')->withPivot('omds');
     }
     
+    public function armamentos()
+    {
+    return $this->belongsToMany('App\Armamento', 'armamentos_oms', 'om_id', 'armamento_id');
+    	
+    }
+    
+    public function municaos()
+    {
+    	return $this->belongsToMany('App\Municao', 'municaos_oms', 'om_id', 'municao_id');
+    	
+    }
+    
 //     public function usuarios(){
 //         return $this->hasMany('App\User', 'om_id');
 //     }
