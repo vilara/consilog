@@ -46,7 +46,7 @@ class User extends Authenticatable
     
     public function perfil()
     {
-    	return $this->belongsTo('App\perfil');
+    	return $this->belongsToMany('App\perfil', 'usuario_perfil', 'usuario_id', 'perfil_id');
     }
     
     public function postograd()
@@ -80,7 +80,18 @@ class User extends Authenticatable
 
     
     
+    public function hasPermission(Permission $permission){
+    	return $this->hasAnyRolers($permission->perfils);
+    }
     
+    public function hasAnyRolers($rols){
+    	foreach ($rols as $rol){
+    		if($this->perfil->contains('tipo', $rol->tipo)){
+    			return true;
+    		}
+    	}
+    	
+    }
     
     
     protected $table = 'usuarios';

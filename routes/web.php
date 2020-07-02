@@ -18,7 +18,11 @@ use FarhanWazir\GoogleMaps\GMaps;
 
 
 Route::resource('/usuarios','UsuariosController');
+
+Route::group(['middleware' => ['auth']], function(){
 Route::resource('/oms','OmsController');
+});
+
 Route::resource('/telefones','TelefonesController');
 Route::resource('/enderecos','EnderecosController');
 Route::resource('/latlongs','LatLongsController');

@@ -128,6 +128,8 @@ class RegisterController extends Controller {
 	 * @return \App\User
 	 */
 	protected function create(array $data) {
+		
+		
 		$mil = new militare ();
 		$mil->idtMilitar = $data ['idt'];
 		$mil->situacao = $data ['situacao'];
@@ -143,10 +145,11 @@ class RegisterController extends Controller {
 		$usuario->sexo = $data ['sexo'];
 		$usuario->funcoe_id = $data ['funcoe_id'];
 		$usuario->om_id = $data ['om_id'];
-		$usuario->perfil_id = $data ['roles'];
+		$usuario->perfil_id = 1;
 		$usuario->password = Hash::make ( $data ['password'] );
 		
 		$usuario->save ();
+		$usuario->perfil()->attach(1);
 		
 		$mil->users ()->save ( $usuario );
 		

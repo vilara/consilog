@@ -16,6 +16,7 @@ use App\secoe;
 use App\tipoTel;
 use App\postograd;
 use App\militare;
+use Illuminate\Support\Facades\Auth;
 
 class UsuariosController extends Controller {
 	
@@ -31,7 +32,14 @@ class UsuariosController extends Controller {
 	 */
 	
 	public function index() {
-		$user = User::with ( 'enderecos','usuarioable' )->get();
+		
+		if (Auth::user()->can('update')) {
+			$user = User::with('enderecos','usuarioable')->get();
+		}else{	
+			$user = Auth::user();
+		}
+		
+		
 		$postgrad = postograd::all();
 		return view ( 'usuario.index', compact ( 'user', 'postgrad' ) );
 	}
@@ -127,18 +135,26 @@ class UsuariosController extends Controller {
 		$usuario->sexo = $request->sexo;
 		$usuario->funcoe_id = $request->funcoe_id;
 		$usuario->om_id = $request->om_id;
-		$usuario->perfil_id = $request->perfil;
+		$usuario->perfil_id = 1;
 		
-		
-		if ($usuario->usuarioable_type == 'militar')
-		{
-		$mil = militare::find($usuario->usuarioable_id);
+		if ($usuario->usuarioable_type == 'militar') {
+			$mil = militare::find($usuario->usuarioable_id);
 		$mil->idtMilitar = $request->idt;
 		$mil->postograd_id = $request->postograd_id;
 		$mil->situacao = $request->situacao;
 		$mil->save();
 		}
+		if ( $request->password != null){
+			$usuario->password = Hash::make($request->password);
+		}else{
+			unset($usuario->password);
+			}
 		$usuario->save();
+		
+		if (isset($request->perfil)) {
+			$usuario->perfil()->detach();
+			$usuario->perfil()->attach($request->perfil);
+		}
 		
 		return redirect ( '/usuarios' )->with ( 'success', 'Usuário Editado com sucesso!' );
 	}

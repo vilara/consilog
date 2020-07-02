@@ -49,6 +49,7 @@
 						
 						<tbody align="center">
 							@foreach ($oms as $om)
+							@can('view', $om)
 							<tr>
 								
 														
@@ -108,6 +109,7 @@
 									</div>
 								</td>
 							</tr>
+							@endcan
 							@endforeach
 						</tbody>
 					</table>

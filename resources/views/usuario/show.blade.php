@@ -130,12 +130,13 @@
   									</div>
                                     </div>
                                  </div>
+							@foreach ($usuario->perfil as $per)
 							
 							<div class="form-group col-md-4">
 										<label for="perfil">Perfil</label>
 									<select class="form-control" id="perfil" name="perfil" disabled="disabled" >
 									@foreach ($perfi as $perfil)
-									@if ($perfil->id== $usuario->perfil_id )
+									@if ($perfil->id == $per->id )
 											<option value="{{ $perfil->id }}" selected="selected">{{$perfil->tipo}}</option>
 												@else
 											<option value="{{ $perfil->id }}">{{$perfil->tipo}}</option>
@@ -144,6 +145,8 @@
 								   </select>
 							</div>
 							
+							
+							@endforeach
 							</div>
 							
 						  <div class="row">
