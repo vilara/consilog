@@ -3,8 +3,10 @@
 namespace App\Policies;
 
 use App\User;
+use App\comando;
 use App\om;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Auth;
 
 class OmPolicy
 {
@@ -19,7 +21,16 @@ class OmPolicy
      */
     public function view(User $user, om $om)
     {
-       return $user->om->id == $om->id;
+    	    	$comandos = comando::all();
+    	    	if($user->can('update')){
+	    	    	if($comandos->contains('id', $user->om->id)){
+	    	    		return ($user->om->id == $om->id || $om->comandos->contains('id', $user->om->id));
+	    	    		}else{
+	    	    			return $user->om->id == $om->id;
+	    	    	}
+    	    	}else{
+    	    		return $user->om->id == $om->id;
+    	    	}
     }
 
     /**
@@ -30,7 +41,7 @@ class OmPolicy
      */
     public function create(User $user)
     {
-        //
+       return true;
     }
 
     /**
@@ -42,7 +53,7 @@ class OmPolicy
      */
     public function update(User $user, om $om)
     {
-        //
+    	return true;
     }
 
     /**
@@ -54,7 +65,7 @@ class OmPolicy
      */
     public function delete(User $user, om $om)
     {
-        //
+    	return true;
     }
 
     /**
@@ -66,7 +77,7 @@ class OmPolicy
      */
     public function restore(User $user, om $om)
     {
-        //
+    	return true;
     }
 
     /**
@@ -78,6 +89,6 @@ class OmPolicy
      */
     public function forceDelete(User $user, om $om)
     {
-        //
+    	return true;
     }
 }

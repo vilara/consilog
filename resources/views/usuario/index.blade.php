@@ -47,6 +47,7 @@
 						<tbody align="center">
 						@can('update')
 							@foreach ($user as $usuario)
+							@can('view',  $usuario->om)
 							<tr>
 								<td>
 							
@@ -106,6 +107,7 @@
 									</div>
 								</td>
 							</tr>
+							@endcan
 							@endforeach
 						@endcan
 						@cannot('update')
