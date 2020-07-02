@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\comando;
 use FarhanWazir\GoogleMaps\GMaps;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ComandoController extends Controller
 {
@@ -15,7 +16,8 @@ class ComandoController extends Controller
      */
     public function index()
     {
-    	$comandos = comando::all();
+    	$comandos = DB::table('comandos')->get();;
+//     	dd($comandos);
     	return view('comando.index', compact('comandos'));
     }
     
@@ -28,20 +30,17 @@ class ComandoController extends Controller
     	$config['map_height'] = '500px';
     	$config['geocodeCaching'] = true;
     	
-    	
     	$gmap = new GMaps();
     	$gmap->initialize($config);
     	
-    	
     	$marker = array();
-    	
-    	
-    	
     	
     	$map = new GMaps();
     	
-    	
     	$cmdsu = comando::find($id);
+//     	dd($cmdsu);
+    	
+    	
     	return view('comando.showSubordinadas', compact('cmdsu', 'gmap', 'map', 'marker'));
     }
 

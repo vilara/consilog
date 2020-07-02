@@ -39,7 +39,7 @@ class om extends Model
      */
     public function comandos()
     {
-    	return $this->belongsToMany('App\comando')->withPivot('omds');
+    	return $this->belongsToMany('App\comando', 'comando_om', 'om_id', 'comando_id' )->withPivot('omds');
     }
     
     public function armamentos()

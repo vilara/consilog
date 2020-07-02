@@ -39,43 +39,13 @@
 						</thead>
 
 						<tbody align="center">
-						@php
-							$teste = [];
-							$idd = [];
-						@endphp
 						@foreach($cmdsu->oms as $om)
-						
-							@foreach ($om->enderecos as $end)
-								@php
-									$marker['position'] = $end->latlong['latitude'].','. $end->latlong['longitude'];
-							    	$marker['infowindow_content'] = 'Brasil';
-							    	$marker['visible'] = true;
-							    	$marker['icon'] = 'http://chart.apis.google.com/chart?chst=d_map_spin&chld=1.0|0|F5DEB3|12|_|'.$om->siglaOm;
-							    	$gmap->add_marker($marker);
-								@endphp
-							@endforeach
-						
-						
-						
-							@if($om->pivot['omds'] == 1)
-						<tr><td>{{ $om->nomeOm }}</td></tr>
-							@endif
-						@foreach($om->comandos as $cmd)
-							@if($cmd->nomeCmdo != $cmdsu->nomeCmdo)
-								@php
-								  $teste[] = $cmd->nomeCmdo;
-								  $idd[] = $cmd->id;
-								@endphp
+							@if(($om->comandos->where('id', $cmdsu->id)->where('pivot.omds', 1))->isNotEmpty())
+							<tr>
+								<td>{{$om->nomeOm}}</th>
+							</tr>
 							@endif
 						@endforeach
-						
-								
-						@endforeach
-						@php $result = array_unique($teste);  $id = array_unique($idd); @endphp
-						@for ($i = 0; $i < count($result); $i++)
-<!-- 							<tr><td>{{ $result[$i] }}</td></tr> -->
-						@endfor
-			
 						</tbody>
 					</table>
 
@@ -88,19 +58,7 @@
 </div>
 
 
-	@php
-	
-	
-    	
-    	$map = $gmap->create_map();
-    	
-	
-	@endphp
-	
-	
-		 {!! $map['js'] !!}
-	 
-	  {!! $map['html'] !!}
+
 
 
 
