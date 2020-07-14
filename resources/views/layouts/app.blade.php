@@ -27,7 +27,7 @@
         <a class="nav-link" href="/">Início <span class="sr-only">(current)</span></a>
       </li>
       
-      
+      @auth
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Administração
@@ -40,7 +40,6 @@
             <a  class="dropdown-item"  href="{{ route('secoes.index') }}">Seções</a>
         </div>
       </li>
-      
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Cadastros
@@ -48,8 +47,32 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
             <a class="dropdown-item" href="{{ route('usuarios.create') }}">Usuário</a>
             <a class="dropdown-item" href="{{ route('oms.create') }}">OM</a>
+            <a class="dropdown-item" href="{{ route('oms.create') }}">Cadastro Efetivos</a>
         </div>
       </li>
+      
+      
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Classe V
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+            <a class="dropdown-item" href="{{ route('armamentos.index') }}">Armamento</a>
+            <a class="dropdown-item" href="{{ route('municaos.index') }}">Munição</a>
+        </div>
+      </li>
+      
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Consultas
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+            <a class="dropdown-item" href="{{ route('armamentos.index') }}">Armamento P/ OM</a>
+            <a class="dropdown-item" href="{{ route('municaos.index') }}">Munição P/ OM</a>
+            <a class="dropdown-item" href="{{ route('municaos.index') }}">Necessidades IRTAEx</a>
+        </div>
+      </li>
+      @endauth
       
      
     </ul>

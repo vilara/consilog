@@ -16,7 +16,7 @@
 							<h3>{{ __('Usuários') }}</h3>
 						</div>
 						<div class="col-md-2" align="right">
-							<a href="../usuarios/create" class="btn btn-success">Novo
+							
 						
 							
 							</a>
@@ -44,9 +44,10 @@
 								<th scope="col">Ações</th>
 							</tr>
 						</thead>
-						
 						<tbody align="center">
+						@can('update')
 							@foreach ($user as $usuario)
+							@can('view',  $usuario->om)
 							<tr>
 								<td>
 							
@@ -61,8 +62,9 @@
 									style="color: inherit;">{{ $usuario->nomeGuerra }}</a></td>
 								<td>{{ $usuario->funcoe['nomeFuncao'] }}</td>
 								<td>{{ $usuario->email }}</td>
-
-								<td>{{ $usuario->perfil['tipo'] }}</td>
+								@foreach($usuario->perfil as $per)
+								<td>{{$per->tipo}}</td>
+								@endforeach
 								<td>{{ $usuario->om['siglaOm'] }}</td>
 
 								<td>@forelse ($usuario->enderecos as $end) @if($loop->last)
@@ -105,7 +107,71 @@
 									</div>
 								</td>
 							</tr>
+							@endcan
 							@endforeach
+						@endcan
+						@cannot('update')
+							<tr>
+								<td>
+							
+								@foreach($postgrad as $pg)
+									@if($pg->id == $user->usuarioable['postograd_id'])
+							       		 {{ $pg->siglaPg }}
+							        @endif
+						        @endforeach
+								
+								</td>
+								
+								<td align="left"><a href="{{ '/usuarios/'.$user->id}}"
+									style="color: inherit;">{{ $user->nomeGuerra }}</a></td>
+								<td>{{ $user->funcoe['nomeFuncao'] }}</td>
+								<td>{{ $user->email }}</td>
+								@foreach($user->perfil as $per)
+								<td>{{$per->tipo}}</td>
+								@endforeach
+								<td>{{ $user->om['siglaOm'] }}</td>
+
+								<td>@forelse ($user->enderecos as $end) @if($loop->last)
+									<center>
+										<a href="{{ route('enderecos.show',$end->id) }}"
+											style="color: inherit;" title="Visualizar endereço"><i class="fas fa-home"></i></a>
+									</center> @endif @empty
+									<center>
+										<a href="{{ url('/usuarios/enderecos/'.$user->id) }}" style="color: red;"><i class="fas fa-home"
+											title="Inserir endereço"></i></a></center>  @endforelse
+								</td>
+
+
+								<td>@forelse ($user->telefones as $tel) @if($loop->last)
+									<center>
+										<a href="{{ url('/usuarios/telefones/'.$user->id) }}"
+											title="Visualizar telefones" style="color: inherit;"><i
+											class="fas fa-phone"></i></a>
+									</center> @endif
+									 @empty
+									<center>
+										<a href="{{ url('/usuarios/telefones/create/'.$user->id) }}" style="color: red;"><i class="fas fa-phone"
+											title="Inserir telefone"></i></a>
+									</center> @endforelse
+								</td>
+
+
+								<td>
+									<div class="row">
+										<div class="col-md-6 pt-0">
+											<a href="{{ route('usuarios.edit',$user->id) }}"	style="color: inherit;"><i class="far fa-edit"></i></a>
+										</div>
+
+										<div class="col-md-6">
+											<form class="form-group" action="{{ route('usuarios.destroy',$user->id) }}"	method="post">
+												@csrf @method('DELETE')
+											<button class="btn form-control pt-0" type="submit"><i class="far fa-trash-alt"></i></button>
+											</form>
+										</div>
+									</div>
+								</td>
+							</tr>
+						@endcannot
 						</tbody>
 					</table>
 

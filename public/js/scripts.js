@@ -3,6 +3,7 @@ $(document).ready(function() {
 		 $('#codoug').mask('999999');
 		 $('#ddd').mask('(99)');
 		 $('#numero').mask('99999-9999');
+		 $('#cep').mask('99999999');
 		 
 	// Acesso ao webservice dos correios inicio
 	// -------------------------------------------------------------

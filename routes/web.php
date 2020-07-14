@@ -18,15 +18,17 @@ use FarhanWazir\GoogleMaps\GMaps;
 
 
 Route::resource('/usuarios','UsuariosController');
+
+Route::group(['middleware' => ['auth']], function(){
 Route::resource('/oms','OmsController');
+});
+
 Route::resource('/telefones','TelefonesController');
 Route::resource('/enderecos','EnderecosController');
 Route::resource('/latlongs','LatLongsController');
 Route::resource('/cidades','CidadesController');
 Route::resource('/estados','EstadosController');
-Route::resource('/funcoes','FuncoesController')->parameters([
-		'funcoes' => 'funcao'
-]); // muda o nome do parametro dos controllers --- nome do objeto tem que ser igual a "funcao"
+Route::resource('/funcoes','FuncoesController')->parameters(['funcoes' => 'funcao']); // muda o nome do parametro dos controllers --- nome do objeto tem que ser igual a "funcao"
 Route::resource('/secoes','SecoesController');
 Route::resource('/logins','LoginsController');
 Route::resource('/civis','CivisController');
@@ -35,6 +37,8 @@ Route::resource('/postograds','PostoGradsController');
 Route::resource('/perfils','PerfilController');
 Route::resource('/tipoTels','tipoTelsController');
 Route::resource('/comandos','ComandoController');
+Route::resource('/armamentos','ArmamentoController');
+Route::resource('/municaos','MunicaoController');
 
 
 Route::get('/','PagesController@welcome');

@@ -36,6 +36,7 @@
 					<table class="table">
 						<thead class="thead-soft" align="center">
 							<tr>
+							<th scope="col">ID</th>
 								<th scope="col">Nome OM</th>
 								<th scope="col">Sigla OM</th>
 								<th scope="col">Codom</th>
@@ -49,9 +50,10 @@
 						
 						<tbody align="center">
 							@foreach ($oms as $om)
+							@can('view', $om)
 							<tr>
 								
-														
+								<td>{{ $om->id }}</td>						
 								<td><a href="{{ route('oms.show',$om->id)}}"
 									style="color: inherit;">{{ $om->nomeOm }}</a></td>
 								<td>{{ $om->siglaOm }}</td>
@@ -108,6 +110,7 @@
 									</div>
 								</td>
 							</tr>
+							@endcan
 							@endforeach
 						</tbody>
 					</table>

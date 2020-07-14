@@ -132,12 +132,12 @@
   									</div>
                                     </div>
                                  </div>
-							
+							@foreach ($usuario->perfil as $per)
 							<div class="form-group col-md-4">
 										<label for="perfil">Perfil</label>
 									<select class="form-control" id="perfil" name="perfil">
 									@foreach ($perfi as $perfil)
-									@if ($perfil->id== $usuario->perfil_id )
+									@if ($perfil->id== $per->id )
 											<option value="{{ $perfil->id }}" selected="selected">{{$perfil->tipo}}</option>
 												@else
 											<option value="{{ $perfil->id }}">{{$perfil->tipo}}</option>
@@ -145,8 +145,22 @@
 										@endforeach	
 								   </select>
 							</div>
-							
+							@endforeach
 							</div>
+						<div class="form-row">	
+						<div class="form-group col-md-6">
+    							<label for="passsword">Nova Senha</label>						
+    						    <input type="password"	class="form-control" id="password" name="password" placeholder=""  value="{{old('password')}}">
+								<small id="password" class="form-text text-muted">Preencha somente se desejar trocar a senha!!</small>
+							</div>
+							
+							<div class="form-group col-md-6">
+    							<label for="password-confirm">Repita nova senha</label>						
+    						    <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
+								<small id="passsword" class="form-text text-muted"></small>
+							</div>	
+						</div>	
+						
 							
 							<button type="submit" class="btn btn-success">
                                     {{ __('Editar') }}
