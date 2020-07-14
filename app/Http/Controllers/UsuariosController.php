@@ -53,6 +53,7 @@ class UsuariosController extends Controller {
 		$funcoe = funcoe::all ();
 		$om = om::all ();
 		$pgs = postograd::all();
+		$perfil = perfil::all();
 		return view ( 'usuario.create', compact ( 'om', 'funcoe', 'perfil','pgs' ) );
 	}
 	
