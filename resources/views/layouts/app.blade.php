@@ -45,7 +45,7 @@
           Cadastros
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-            <a class="dropdown-item" href="{{ route('usuarios.create') }}">Usuário</a>
+<!--             <a class="dropdown-item" href="{{ route('usuarios.create') }}">Usuário</a> -->
             <a class="dropdown-item" href="{{ route('oms.create') }}">OM</a>
             <a class="dropdown-item" href="{{ route('oms.create') }}">Cadastro Efetivos</a>
         </div>
