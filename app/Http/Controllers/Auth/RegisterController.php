@@ -130,7 +130,7 @@ class RegisterController extends Controller {
 	protected function create(array $data) {
 		
 		
-		$mil = new militare ();
+		$mil = new militare();
 		$mil->idtMilitar = $data ['idt'];
 		$mil->situacao = $data ['situacao'];
 		$mil->postograd_id = $data ['postograd_id'];
@@ -151,7 +151,7 @@ class RegisterController extends Controller {
 		$usuario->save ();
 		$usuario->perfil()->attach(1);
 		
-		$mil->users ()->save ( $usuario );
+		$mil->users()->save($usuario);
 		
 		return $usuario;
 	}
